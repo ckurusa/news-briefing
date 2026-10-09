@@ -58,10 +58,12 @@ def main() -> int:
         _, pdf_path = make_paper(briefing, market, today, OUTPUT_DIR, DOCS_DIR if args.publish else None)
         print(f"   나믿따 신문(A4) 저장: {pdf_path or '(PDF 생성 불가, HTML만 저장)'}")
         if args.publish and not args.no_send:
-            from publish import publish
+            from publish import publish, wait_until_live
 
             publish(today)
             paper_url = PAGES_URL
+            if not wait_until_live(PAGES_URL, today):
+                print("[경고] 신문 페이지 반영 확인 시간 초과 (링크는 그대로 보냅니다)", file=sys.stderr)
     except Exception as e:  # 신문 생성·게시 실패가 카카오 전송을 막지 않게
         print(f"[경고] 신문 생성/게시 실패: {e}", file=sys.stderr)
 
@@ -78,7 +80,8 @@ def main() -> int:
 
     send_all(messages)
     if paper_url:
-        send_text("📰 나믿따 신문 (A4 한 장)\n눌러서 신문으로 보기", url=paper_url)
+        # 카카오는 앱에 등록되지 않은 도메인의 링크 버튼을 열지 못할 수 있어, 본문에도 주소를 함께 넣는다
+        send_text(f"📰 나믿따 신문 (A4 한 장)\n{paper_url}", url=paper_url)
     history.record(briefing, today)  # 전송 성공 후에만 이력 저장
     print("완료.")
     return 0

@@ -20,6 +20,17 @@ copy .env.example .env     # 값 채우기
 | 3 | `python send_kakao.py auth` → `python send_kakao.py test` | 카카오 최초 인증, 테스트 전송 |
 | 3 | `python main.py` | 실제 전송 (A안: 섹션별 분할) |
 
+| 4 | `python main.py --publish` | 위 + A4 신문을 깃허브 페이지(`docs/`)에 게시하고 카카오로 링크 전송 |
+
+## 나믿따 신문 (A4 한 장)
+- `output/나믿따신문_날짜.html·pdf`: 개인용 (오늘의 소재 박스 포함, PC에만 저장)
+- `docs/`: 공개용 (소재 박스 제외). GitHub Pages로 https://ckurusa.github.io/news-briefing/ 에 게시된다. 주소를 아는 누구나 볼 수 있으므로 개인 정보나 키를 넣지 않는다.
+- 게시는 `--publish`를 줄 때만 한다. 푸시는 `gh`의 ckurusa 토큰을 명시해 사용한다.
+- 카카오 링크 버튼은 앱에 등록한 도메인만 열릴 수 있어, 본문에도 주소를 함께 보낸다.
+
+## 자동 실행 (평일 08:00)
+Windows 작업 스케줄러 "나믿따 뉴스브리핑"이 `run_daily.bat`을 실행한다(전송 → 게시 → 신문 페이지 열기). 로그는 `data/run.log`. PC가 켜져 있고 로그인 상태여야 한다. 해제: `Unregister-ScheduledTask -TaskName "나믿따 뉴스브리핑"`.
+
 실행하면 링크 포함 전체본이 `output/briefing_YYYY-MM-DD.md`에 저장되고, 전송 성공 시 `data/history.json`(7일 중복 체크)과 `data/ideas.json`(소재 누적)에 기록된다.
 
 ## 설계 메모
