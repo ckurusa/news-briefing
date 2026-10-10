@@ -97,11 +97,19 @@ def send_text(text: str, url: str = "https://news.google.com") -> None:
         return
 
 
-def send_all(messages: list[str], delay: float = 0.5) -> None:
+def send_all(messages: list[str], delay: float = 0.5) -> int:
+    """전송에 성공한 메시지 수를 반환한다. 중간에 실패하면 예외 메시지에 성공 수를 담아 던진다."""
+    sent = 0
     for i, m in enumerate(messages, 1):
-        send_text(m)
+        try:
+            send_text(m)
+        except Exception as e:
+            e.sent = sent  # 발송 기록용
+            raise
+        sent += 1
         print(f"  전송 {i}/{len(messages)}")
         time.sleep(delay)
+    return sent
 
 
 CODE_PATH = Path(__file__).parent / "data" / "kakao_code.txt"

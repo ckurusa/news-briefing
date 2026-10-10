@@ -5,6 +5,8 @@ from datetime import date
 from html import escape
 from pathlib import Path
 
+from sections import SECTIONS
+
 WEEKDAYS = "월화수목금토일"
 
 CSS = """
@@ -12,41 +14,44 @@ CSS = """
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: #e9e6df; }
 body { font-family: 'Noto Serif KR', 'Batang', 'Malgun Gothic', serif; color: #1b1b1b; word-break: keep-all; }
-.page { width: 210mm; height: 297mm; margin: 0 auto; padding: 11mm 12mm; background: #fbf9f3;
+.page { width: 210mm; height: 297mm; margin: 0 auto; padding: 8mm 11mm; background: #fbf9f3;
         display: flex; flex-direction: column; overflow: hidden; }
 @media print { html, body { background: none; } .page { margin: 0; } }
 a { color: inherit; text-decoration: none; }
 .masthead { text-align: center; border-bottom: 3px double #1b1b1b; padding-bottom: 3mm; }
-.masthead h1 { font-size: 46pt; letter-spacing: 6px; font-weight: 900; line-height: 1.1; }
+.masthead h1 { font-size: 36pt; letter-spacing: 5px; font-weight: 900; line-height: 1.1; }
 .masthead .sub { font-family: 'Malgun Gothic', sans-serif; font-size: 8.5pt; color: #444; margin-top: 1.5mm;
                  display: flex; justify-content: space-between; border-top: 1px solid #1b1b1b; padding-top: 1.5mm; }
 .ticker { display: grid; grid-template-columns: repeat(6, 1fr); font-family: 'Malgun Gothic', sans-serif;
-          border-bottom: 1px solid #1b1b1b; margin-bottom: 4mm; }
-.ticker div { padding: 2mm 1.5mm; text-align: center; border-right: 1px solid #bbb; font-size: 8pt; }
+          border-bottom: 1px solid #1b1b1b; margin-bottom: 3mm; }
+.ticker div { padding: 1.2mm 1mm; text-align: center; border-right: 1px solid #bbb; font-size: 8pt; }
 .ticker div:last-child { border-right: none; }
 .ticker b { display: block; font-size: 8pt; color: #555; font-weight: 700; }
-.ticker span { font-size: 10pt; font-weight: 700; }
+.ticker span { display: block; font-size: 10pt; font-weight: 700; }
 .up { color: #c0392b; } .down { color: #1f5fa8; }
-.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto 1fr;
-        column-gap: 5mm; row-gap: 4mm; min-height: 0; }
+.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: auto;
+        column-gap: 5mm; row-gap: 2.5mm; min-height: 0; align-content: start; }
+.grid > .c2, .grid > .c3 { border-left: 1px solid #1b1b1b; padding-left: 5mm; }
+.grid > .wide { grid-column: 2 / span 2; }
+.grid > .wide .item { break-inside: avoid; }
 .sec h2 { font-family: 'Malgun Gothic', sans-serif; font-size: 10pt; letter-spacing: 1px; color: #fff;
-          background: #1b1b1b; padding: 1mm 2.5mm; margin-bottom: 2.5mm; display: inline-block; }
-.headline { grid-column: 1 / span 2; border-right: 1px solid #1b1b1b; padding-right: 5mm; }
-.headline h3 { font-size: 25pt; line-height: 1.25; font-weight: 900; margin-bottom: 2.5mm; }
-.headline p { font-size: 11.5pt; line-height: 1.65; }
-.fun { grid-column: 3; grid-row: 1 / span 2; border-left: 1px solid #1b1b1b; padding-left: 5mm; }
-.item { padding: 2.2mm 0; border-bottom: 1px solid #ccc; }
+          background: #1b1b1b; padding: 1mm 2.5mm; margin-bottom: 1.5mm; display: inline-block; }
+.headline { grid-column: 1 / span 2; padding-right: 2mm; }
+.headline h3 { font-size: 22pt; line-height: 1.25; font-weight: 900; margin-bottom: 2.5mm; }
+.headline p { font-size: 10.5pt; line-height: 1.55; }
+.fun { grid-column: 3; }
+.item { padding: 1.2mm 0; border-bottom: 1px solid #ccc; }
 .item:last-child { border-bottom: none; }
-.item h4 { font-size: 11.5pt; line-height: 1.35; font-weight: 800; margin-bottom: 1mm; }
-.item p { font-size: 9.5pt; line-height: 1.55; color: #333; }
-.item .src { font-family: 'Malgun Gothic', sans-serif; font-size: 7.5pt; color: #777; margin-top: 1mm; }
-.fun .item h4 { font-size: 13pt; }
-.fun .item p { font-size: 10pt; }
-.ideas { grid-column: 1 / span 3; border: 2px solid #1b1b1b; padding: 3.5mm 4mm; margin-top: 1mm; background: #f3efe3; }
-.ideas h2 { background: #1b1b1b; }
-.ideas ul { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 5mm; }
-.ideas li { font-size: 9pt; line-height: 1.5; color: #333; }
-.ideas li b { display: block; font-size: 11pt; color: #1b1b1b; margin-bottom: 1mm; line-height: 1.35; }
+.item h4 { font-size: 10pt; line-height: 1.35; font-weight: 800; margin-bottom: 0.8mm; }
+.item p { font-size: 8.5pt; line-height: 1.42; color: #333; }
+.item .src { font-family: 'Malgun Gothic', sans-serif; font-size: 7.5pt; color: #777; margin-top: 0.8mm; }
+.item .src a.orig { color: #1f5fa8; font-weight: 700; margin-left: 1.5mm; }
+.fun .item h4 { font-size: 10.5pt; }
+.fun .item p { font-size: 8.5pt; }
+.ideas { border: 2px solid #1b1b1b; padding: 2.5mm 3mm; background: #f3efe3; }
+.ideas ul { list-style: none; }
+.ideas li { font-size: 8pt; line-height: 1.4; color: #333; margin-bottom: 1.2mm; }
+.ideas li b { display: block; font-size: 9pt; color: #1b1b1b; margin-bottom: 0.4mm; line-height: 1.35; }
 .footer { font-family: 'Malgun Gothic', sans-serif; font-size: 7pt; color: #777; margin-top: 3mm;
           border-top: 1px solid #1b1b1b; padding-top: 1.5mm; display: flex; justify-content: space-between; }
 /* 휴대폰 화면: A4 고정 폭 대신 세로로 쌓는다 (인쇄에는 적용되지 않음) */
@@ -56,11 +61,11 @@ a { color: inherit; text-decoration: none; }
   .masthead .sub { font-size: 7pt; flex-wrap: wrap; gap: 1mm; justify-content: center; }
   .ticker { grid-template-columns: repeat(3, 1fr); }
   .grid { display: block; }
+  .grid > .c2, .grid > .c3 { border-left: none; padding-left: 0; }
   .headline { border-right: none; padding-right: 0; margin-bottom: 4mm; }
   .headline h3 { font-size: 19pt; }
-  .fun { border-left: none; padding-left: 0; margin: 4mm 0; }
+  .item h4 { font-size: 11.5pt; } .item p { font-size: 10pt; }
   .sec { margin-bottom: 4mm; }
-  .ideas ul { grid-template-columns: 1fr; row-gap: 3mm; }
   .footer { flex-direction: column; gap: 1mm; }
 }
 """
@@ -70,7 +75,8 @@ def _item(it: dict) -> str:
     summary = f"<p>{escape(it['summary'])}</p>" if it["summary"] else ""
     return (
         f'<div class="item"><h4><a href="{escape(it["link"])}">{escape(it["title"])}</a></h4>'
-        f'{summary}<div class="src">{escape(it["source"])}</div></div>'
+        f'{summary}<div class="src">{escape(it["source"])}'
+        f'<a class="orig" href="{escape(it["link"])}">원문 보기 ›</a></div></div>'
     )
 
 
@@ -78,8 +84,12 @@ def _ticker(market: list[str]) -> str:
     cells = []
     for line in market:
         name, _, rest = line.partition(" ")
+        value, _, change = rest.partition(" ")  # "6,625.93 (▼2.62%)" → 값 / 등락 두 줄
         cls = "up" if "▲" in rest else ("down" if "▼" in rest else "")
-        cells.append(f'<div><b>{escape(name)}</b><span class="{cls}">{escape(rest)}</span></div>')
+        cells.append(
+            f'<div><b>{escape(name)}</b><span class="{cls}">{escape(value)}</span>'
+            f'<span class="{cls}" style="font-size:8.5pt">{escape(change)}</span></div>'
+        )
     return f'<div class="ticker">{"".join(cells)}</div>'
 
 
@@ -91,12 +101,27 @@ def to_html(briefing: dict, market: list[str], today: date, include_ideas: bool 
         head_html = (
             f'<div class="sec headline"><h2>TOP · AI·테크</h2>'
             f'<h3><a href="{escape(head["link"])}">{escape(head["title"])}</a></h3>'
-            f'<p>{escape(head["summary"])}</p><div class="item"><div class="src">{escape(head["source"])}</div></div></div>'
+            f'<p>{escape(head["summary"])}</p><div class="item"><div class="src">{escape(head["source"])}'
+            f'<a class="orig" href="{escape(head["link"])}">원문 보기 ›</a></div></div></div>'
         )
     ideas_li = "".join(
         f"<li><b>“{escape(i['title'])}”</b>{escape(i['angle'])}</li>" for i in briefing["ideas"]
     )
-    ideas_html = f'<div class="sec ideas"><h2>오늘의 소재</h2><ul>{ideas_li}</ul></div>' if include_ideas else ""
+    # 헤드라인·재미 다음 칸들을 3열로 채운다: AI(나머지) 경제 산업 / 커리어 건강 소재
+    cells = [("ai_tech", ai[1:])] + [(s.key, briefing.get(s.key, [])) for s in SECTIONS if s.key not in ("ai_tech", "fun")]
+    labels = {s.key: s.label for s in SECTIONS}
+    boxes = [(k, f'<h2>{labels[k]}</h2>' + "".join(_item(i) for i in items)) for k, items in cells if items]
+    if include_ideas:
+        boxes.append(("ideas", f'<h2>오늘의 소재</h2><ul>{ideas_li}</ul>'))
+    grid_cells = []
+    for n, (key, inner) in enumerate(boxes):
+        cls = ["sec", ["", "c2", "c3"][n % 3]]
+        if key == "ideas":
+            cls.append("ideas")
+        if not include_ideas and n == len(boxes) - 1 and n % 3 == 1:
+            cls += ["wide"]  # 마지막 칸이 둘째 열에서 끝나면 오른쪽 빈칸까지 넓힌다
+        grid_cells.append(f'<div class="{" ".join(c for c in cls if c)}">{inner}</div>')
+    cells_html = "".join(grid_cells)
     return f"""<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex"><title>나믿따 신문 {today:%Y-%m-%d}</title>
@@ -106,10 +131,8 @@ def to_html(briefing: dict, market: list[str], today: date, include_ideas: bool 
 {_ticker(market)}
 <div class="grid">
 {head_html}
-<div class="sec fun"><h2>오늘의 재미</h2>{"".join(_item(i) for i in briefing["fun"])}</div>
-<div class="sec"><h2>AI·테크</h2>{"".join(_item(i) for i in ai[1:])}</div>
-<div class="sec"><h2>경제·시장</h2>{"".join(_item(i) for i in briefing["economy"])}</div>
-{ideas_html}
+<div class="sec fun c3"><h2>오늘의 재미</h2>{"".join(_item(i) for i in briefing.get("fun", []))}</div>
+{cells_html}
 </div>
 <div class="footer"><span>※ 요약은 기사 제목을 바탕으로 AI가 작성했습니다. 소재로 쓰기 전 원문을 확인하세요.</span><span>시세: Yahoo Finance · 기사: Google News</span></div>
 </div></body></html>

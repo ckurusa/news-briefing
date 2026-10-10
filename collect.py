@@ -8,15 +8,11 @@ from urllib.parse import quote
 
 import requests
 
+from sections import SECTIONS
+
 HEADERS = {"User-Agent": "Mozilla/5.0 (news-briefing personal tool)"}
 TIMEOUT = 15
 
-# 섹션별 구글뉴스 검색 키워드 (최근 1일). 필요하면 여기만 수정.
-QUERIES = {
-    "ai_tech": ["AI 신기능 출시", "생성형 AI 업데이트", "Claude OR ChatGPT OR Gemini", "AI 도구 업무 활용"],
-    "economy": ["원달러 환율", "기준금리", "코스피 마감", "비트코인 시세"],
-    "fun": ["이색", "화제", "알고보니", "직장인", "신기한 과학", "반전"],
-}
 PER_QUERY = 6  # 키워드당 후보 기사 수
 
 # (표시명, Yahoo 심볼, 소수점 자리, 단위)
@@ -58,9 +54,9 @@ def collect_news() -> dict[str, list[dict]]:
     """섹션별 후보 기사 목록(링크 기준 중복 제거)."""
     result: dict[str, list[dict]] = {}
     seen: set[str] = set()
-    for section, queries in QUERIES.items():
-        articles = []
-        for q in queries:
+    for sec in SECTIONS:
+        section, articles = sec.key, []
+        for q in sec.queries:
             try:
                 for a in fetch_rss(q):
                     if a["link"] not in seen:
@@ -73,14 +69,18 @@ def collect_news() -> dict[str, list[dict]]:
 
 
 def _yahoo_quote(symbol: str) -> tuple[float, float] | None:
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{quote(symbol)}?interval=1d&range=5d"
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{quote(symbol)}?interval=1d&range=10d"
     resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     resp.raise_for_status()
     result = resp.json()["chart"]["result"][0]
+    # 종가 목록의 마지막 값이 빠지는 경우가 있어, 현재가는 meta 값을 기준으로 삼는다
+    cur = result["meta"]["regularMarketPrice"]
     closes = [c for c in result["indicators"]["quote"][0]["close"] if c is not None]
-    if len(closes) < 2:
+    if not closes:
         return None
-    return closes[-1], closes[-2]
+    # 마지막 종가가 현재가와 같으면 그 전 종가가, 다르면 마지막 종가가 '전일 종가'
+    prev = closes[-2] if abs(closes[-1] - cur) < 1e-6 * abs(cur) and len(closes) >= 2 else closes[-1]
+    return cur, prev
 
 
 def collect_market() -> list[str]:

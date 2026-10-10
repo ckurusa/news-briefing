@@ -13,6 +13,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 import history
+from sections import KEYS
 from collect import collect_market, collect_news
 from render import to_kakao_messages, to_markdown
 from render_paper import make_paper
@@ -47,7 +48,7 @@ def main() -> int:
     print("2) 요약·소재 제안 생성 중...")
     from summarize import summarize  # collect-only에서는 anthropic 불필요
 
-    briefing = summarize(news, market)
+    briefing = summarize(news, market, history.recent_titles(today))
     messages = to_kakao_messages(briefing, market, today)
     OUTPUT_DIR.mkdir(exist_ok=True)
     md_path = OUTPUT_DIR / f"briefing_{today:%Y-%m-%d}.md"
@@ -78,11 +79,19 @@ def main() -> int:
     print("3) 카카오톡 전송 중...")
     from send_kakao import send_all, send_text
 
-    send_all(messages)
-    if paper_url:
-        # 카카오는 앱에 등록되지 않은 도메인의 링크 버튼을 열지 못할 수 있어, 본문에도 주소를 함께 넣는다
-        send_text(f"📰 나믿따 신문 (A4 한 장)\n{paper_url}", url=paper_url)
+    n_articles = sum(len(briefing.get(k, [])) for k in KEYS)
+    sent, paper_sent = 0, False
+    try:
+        sent = send_all(messages)
+        if paper_url:
+            # 카카오는 앱에 등록되지 않은 도메인의 링크 버튼을 열지 못할 수 있어, 본문에도 주소를 함께 넣는다
+            send_text(f"📰 나믿따 신문 (A4 한 장)\n{paper_url}", url=paper_url)
+            paper_sent = True
+    except Exception as e:
+        history.log_send("failed", getattr(e, "sent", sent), len(messages), paper_sent, n_articles, str(e))
+        raise
     history.record(briefing, today)  # 전송 성공 후에만 이력 저장
+    history.log_send("success", sent, len(messages), paper_sent, n_articles)
     print("완료.")
     return 0
 

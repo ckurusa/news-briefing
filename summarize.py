@@ -4,20 +4,26 @@ from pathlib import Path
 
 import anthropic
 
+from sections import KEYS, SECTIONS
+
 PROMPT_PATH = Path(__file__).parent / "prompts" / "briefing.md"
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
-LIMITS = {"ai_tech": 3, "economy": 3, "fun": 2}
-PREFIX = {"ai_tech": "A", "economy": "E", "fun": "F"}
 MAX_CANDIDATES = 15  # 섹션당 AI에 넘기는 후보 수 (토큰 절약)
 
 
-def _build_user_message(news: dict[str, list[dict]], market: list[str]) -> tuple[str, dict[str, dict]]:
+def _build_user_message(
+    news: dict[str, list[dict]], market: list[str], recent: list[str]
+) -> tuple[str, dict[str, dict]]:
     index: dict[str, dict] = {}
     parts = ["## 오늘의 시세 (API 값)", "\n".join(market) or "(수집 실패)"]
-    for section, articles in news.items():
-        parts.append(f"\n## 후보 기사: {section}")
+    if recent:
+        parts += ["\n## 최근 7일 이미 보낸 기사 (같은 사건·주제는 다른 언론사 기사라도 고르지 말 것)"]
+        parts += [f"- {t}" for t in recent[:80]]
+    for sec in SECTIONS:
+        articles = news.get(sec.key, [])
+        parts.append(f"\n## 후보 기사: {sec.key} ({sec.label}, {sec.limit}건 선택)")
         for i, a in enumerate(articles[:MAX_CANDIDATES], 1):
-            aid = f"{PREFIX[section]}{i}"
+            aid = f"{sec.prefix}{i}"
             index[aid] = a
             parts.append(f"[{aid}] {a['title']} ({a['source']})")
     return "\n".join(parts), index
@@ -42,9 +48,7 @@ BRIEFING_TOOL = {
     "input_schema": {
         "type": "object",
         "properties": {
-            "ai_tech": _ARTICLE,
-            "economy": _ARTICLE,
-            "fun": _ARTICLE,
+            **{k: _ARTICLE for k in KEYS},
             "ideas": {
                 "type": "array",
                 "items": {
@@ -54,15 +58,15 @@ BRIEFING_TOOL = {
                 },
             },
         },
-        "required": ["ai_tech", "economy", "fun", "ideas"],
+        "required": [*KEYS, "ideas"],
     },
 }
 
 
-def summarize(news: dict[str, list[dict]], market: list[str]) -> dict:
-    """반환: {"ai_tech": [...], "economy": [...], "fun": [...], "ideas": [...]}
+def summarize(news: dict[str, list[dict]], market: list[str], recent: list[str] | None = None) -> dict:
+    """반환: {섹션 key: [기사...], ..., "ideas": [...]}  (섹션은 sections.py 참고)
     기사 항목에는 title, summary, source, link(코드가 원본에서 붙임)가 들어간다."""
-    user_msg, index = _build_user_message(news, market)
+    user_msg, index = _build_user_message(news, market, recent or [])
     client = anthropic.Anthropic()  # ANTHROPIC_API_KEY 환경변수 사용
     resp = client.messages.create(
         model=MODEL,
@@ -79,7 +83,8 @@ def summarize(news: dict[str, list[dict]], market: list[str]) -> dict:
         raise RuntimeError("Claude가 submit_briefing 도구를 호출하지 않았습니다. 다시 실행해 보세요.")
 
     briefing: dict = {}
-    for section, limit in LIMITS.items():
+    for sec in SECTIONS:
+        section, limit = sec.key, sec.limit
         items = []
         for it in data.get(section, []):
             src = index.get(it.get("id"))
@@ -87,6 +92,7 @@ def summarize(news: dict[str, list[dict]], market: list[str]) -> dict:
                 continue
             items.append({
                 "title": it.get("title") or src["title"],
+                "orig_title": src["title"],
                 "summary": it.get("summary", ""),
                 "source": src["source"],
                 "link": src["link"],

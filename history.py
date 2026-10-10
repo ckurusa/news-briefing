@@ -4,8 +4,11 @@ import re
 from datetime import date, timedelta
 from pathlib import Path
 
+from sections import KEYS
+
 HISTORY_PATH = Path(__file__).parent / "data" / "history.json"
-IDEAS_PATH = Path(__file__).parent / "data" / "ideas.json"
+SEND_LOG_PATH = Path(__file__).parent / "data" / "send_log.jsonl"
+IDEAS_PATH =Path(__file__).parent / "data" / "ideas.json"
 KEEP_DAYS = 7
 
 
@@ -35,12 +38,36 @@ def filter_duplicates(news: dict[str, list[dict]], today: date) -> dict[str, lis
     }
 
 
+def log_send(status: str, sent: int, total: int, paper: bool, articles: int = 0, error: str = "") -> None:
+    """발송 기록을 data/send_log.jsonl에 한 줄씩 누적한다 (같은 날 재전송도 각각 남는다)."""
+    from datetime import datetime
+
+    row = {
+        "time": datetime.now().isoformat(timespec="seconds"),
+        "status": status,  # success | failed
+        "messages_sent": sent,
+        "messages_total": total,
+        "paper_link_sent": paper,
+        "articles": articles,
+        "error": error[:300],
+    }
+    SEND_LOG_PATH.parent.mkdir(exist_ok=True)
+    with SEND_LOG_PATH.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
+def recent_titles(today: date) -> list[str]:
+    """최근 7일에 보낸 기사 제목(같은 사건을 다른 언론사 기사로 또 보내지 않도록 AI에 알려 준다)."""
+    return [t for h in _recent(today) for t in h["titles"]]
+
+
 def record(briefing: dict, today: date) -> None:
-    items = [it for sec in ("ai_tech", "economy", "fun") for it in briefing[sec]]
+    items = [it for sec in KEYS for it in briefing.get(sec, [])]
     entry = {
         "date": today.isoformat(),
         "links": [it["link"] for it in items],
-        "titles": [it["title"] for it in items],
+        # 요약용 제목과 원문 제목을 둘 다 남긴다
+        "titles": [t for it in items for t in {it["title"], it.get("orig_title", it["title"])}],
         "ideas": [i["title"] for i in briefing["ideas"]],  # 소재 누적
     }
     history = [h for h in _recent(today) if h["date"] != entry["date"]] + [entry]
