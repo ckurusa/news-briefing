@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>나믿따 신문 2026-10-14</title>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #e9e6df; }
+body { font-family: 'Noto Serif KR', 'Batang', 'Malgun Gothic', serif; color: #1b1b1b; word-break: keep-all; }
+.page { width: 210mm; height: 297mm; margin: 0 auto; padding: 8mm 11mm; background: #fbf9f3;
+        display: flex; flex-direction: column; overflow: hidden; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+a { color: inherit; text-decoration: none; }
+.masthead { text-align: center; border-bottom: 3px double #1b1b1b; padding-bottom: 3mm; }
+.masthead h1 { font-size: 36pt; letter-spacing: 5px; font-weight: 900; line-height: 1.1; }
+.masthead .sub { font-family: 'Malgun Gothic', sans-serif; font-size: 8.5pt; color: #444; margin-top: 1.5mm;
+                 display: flex; justify-content: space-between; border-top: 1px solid #1b1b1b; padding-top: 1.5mm; }
+.ticker { display: grid; grid-template-columns: repeat(6, 1fr); font-family: 'Malgun Gothic', sans-serif;
+          border-bottom: 1px solid #1b1b1b; margin-bottom: 3mm; }
+.ticker div { padding: 1.2mm 1mm; text-align: center; border-right: 1px solid #bbb; font-size: 8pt; }
+.ticker div:last-child { border-right: none; }
+.ticker b { display: block; font-size: 8pt; color: #555; font-weight: 700; }
+.ticker span { display: block; font-size: 10pt; font-weight: 700; }
+.up { color: #c0392b; } .down { color: #1f5fa8; }
+.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: auto;
+        column-gap: 5mm; row-gap: 2.5mm; min-height: 0; align-content: start; }
+.grid > .c2, .grid > .c3 { border-left: 1px solid #1b1b1b; padding-left: 5mm; }
+.grid > .wide { grid-column: 2 / span 2; }
+.grid > .wide .item { break-inside: avoid; }
+.sec h2 { font-family: 'Malgun Gothic', sans-serif; font-size: 10pt; letter-spacing: 1px; color: #fff;
+          background: #1b1b1b; padding: 1mm 2.5mm; margin-bottom: 1.5mm; display: inline-block; }
+.headline { grid-column: 1 / span 2; padding-right: 2mm; }
+.headline h3 { font-size: 22pt; line-height: 1.25; font-weight: 900; margin-bottom: 2.5mm; }
+.headline p { font-size: 10.5pt; line-height: 1.55; }
+.fun { grid-column: 3; }
+.item { padding: 1.2mm 0; border-bottom: 1px solid #ccc; }
+.item:last-child { border-bottom: none; }
+.item h4 { font-size: 10pt; line-height: 1.35; font-weight: 800; margin-bottom: 0.8mm; }
+.item p { font-size: 8.5pt; line-height: 1.42; color: #333; }
+.item .src { font-family: 'Malgun Gothic', sans-serif; font-size: 7.5pt; color: #777; margin-top: 0.8mm; }
+.item .src a.orig { color: #1f5fa8; font-weight: 700; margin-left: 1.5mm; }
+.fun .item h4 { font-size: 10.5pt; }
+.fun .item p { font-size: 8.5pt; }
+.ideas { border: 2px solid #1b1b1b; padding: 2.5mm 3mm; background: #f3efe3; }
+.ideas ul { list-style: none; }
+.ideas li { font-size: 8pt; line-height: 1.4; color: #333; margin-bottom: 1.2mm; }
+.ideas li b { display: block; font-size: 9pt; color: #1b1b1b; margin-bottom: 0.4mm; line-height: 1.35; }
+.footer { font-family: 'Malgun Gothic', sans-serif; font-size: 7pt; color: #777; margin-top: 3mm;
+          border-top: 1px solid #1b1b1b; padding-top: 1.5mm; display: flex; justify-content: space-between; }
+/* 휴대폰 화면: A4 고정 폭 대신 세로로 쌓는다 (인쇄에는 적용되지 않음) */
+@media screen and (max-width: 820px) {
+  .page { width: 100%; height: auto; padding: 5mm 4mm; }
+  .masthead h1 { font-size: 30pt; letter-spacing: 3px; }
+  .masthead .sub { font-size: 7pt; flex-wrap: wrap; gap: 1mm; justify-content: center; }
+  .ticker { grid-template-columns: repeat(3, 1fr); }
+  .grid { display: block; }
+  .grid > .c2, .grid > .c3 { border-left: none; padding-left: 0; }
+  .headline { border-right: none; padding-right: 0; margin-bottom: 4mm; }
+  .headline h3 { font-size: 19pt; }
+  .item h4 { font-size: 11.5pt; } .item p { font-size: 10pt; }
+  .sec { margin-bottom: 4mm; }
+  .footer { flex-direction: column; gap: 1mm; }
+}
+</style></head><body><div class="page">
+<div class="masthead"><h1>나믿따 신문</h1>
+<div class="sub"><span>AI · 경제 · 재미를 한 장에</span><span>2026년 10월 14일 수요일</span><span>나믿따 뉴스브리핑 편집</span></div></div>
+<div class="ticker"><div><b>원/달러</b><span class="up">1,339.4원</span><span class="up" style="font-size:8.5pt">(▲0.40%)</span></div><div><b>코스피</b><span class="down">6,035.35</span><span class="down" style="font-size:8.5pt">(▼5.46%)</span></div><div><b>코스닥</b><span class="down">837.03</span><span class="down" style="font-size:8.5pt">(▼1.43%)</span></div><div><b>S&amp;P500</b><span class="down">7,805.45</span><span class="down" style="font-size:8.5pt">(▼0.02%)</span></div><div><b>나스닥</b><span class="down">27,204.38</span><span class="down" style="font-size:8.5pt">(▼0.15%)</span></div><div><b>비트코인</b><span class="up">83,428달러</span><span class="up" style="font-size:8.5pt">(▲2.04%)</span></div></div>
+<div class="grid">
+<div class="sec headline"><h2>TOP · AI·테크</h2><h3><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5MMjVkeldvWEJpY2ZwYW9FcUVuM1FoWlduc1kzUnFuRmZDRFBrUkl4Yl9uM2toRmotcTVTUll6QWxHZTRmb2ljYmpseExQRlRIa1ZlMTdoUVdsakVNSEFFemZGQTlfZC02eHhDQWZwdjY?oc=5">워크데이, Claude 통합</a></h3><p>워크데이가 Anthropic과 손잡고 자사 서비스에 Claude AI를 통합한다.</p><div class="item"><div class="src">Investing.com 한국어<a class="orig" href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5MMjVkeldvWEJpY2ZwYW9FcUVuM1FoWlduc1kzUnFuRmZDRFBrUkl4Yl9uM2toRmotcTVTUll6QWxHZTRmb2ljYmpseExQRlRIa1ZlMTdoUVdsakVNSEFFemZGQTlfZC02eHhDQWZwdjY?oc=5">원문 보기 ›</a></div></div></div>
+<div class="sec fun c3"><h2>오늘의 재미</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFBwNmdCb2ZsWlgxaEZmRHdMaEtLcnF5TU5OY3VjdHBRYW92ZnRBRTh4M05hc3lGVFEwUDBLb2VLR2o3VkRjOThUUFBKSTBoQVRra1M2WlowT0pEZw?oc=5">9.5점 감상문, AI가 썼다</a></h4><p>서울대 교수도 극찬한 9.5점 감상문이 알고 보니 AI가 쓴 글이었다.</p><div class="src">한국경제<a class="orig" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFBwNmdCb2ZsWlgxaEZmRHdMaEtLcnF5TU5OY3VjdHBRYW92ZnRBRTh4M05hc3lGVFEwUDBLb2VLR2o3VkRjOThUUFBKSTBoQVRra1M2WlowT0pEZw?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE5lN1ZjckEtVVhMMkgyWjhSRjNjVW9RR3UxUHlIOHY0T25FZFJ2aW9IMUtYd3NGX08waDhqSEVDTE44M2dHVEpHSHJfSjFWdw?oc=5">180cm 로봇 격투 화제</a></h4><p>180cm대 로봇끼리 무기를 들고 싸우는 로봇 격투가 화제.</p><div class="src">전자신문<a class="orig" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE5lN1ZjckEtVVhMMkgyWjhSRjNjVW9RR3UxUHlIOHY0T25FZFJ2aW9IMUtYd3NGX08waDhqSEVDTE44M2dHVEpHSHJfSjFWdw?oc=5">원문 보기 ›</a></div></div></div>
+<div class="sec"><h2>AI·테크</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFAyUHF2R2Z3MGl4WUpPR2ZoTmpiQ2gxa3lPbXd5T0NMcVVLbkQ1YnFQMWdlRE5HbHkwNGVIbGdjaXJIWU5JbzJUNEEzT1JDc09IRUlJcnJZaUZzc3N6V3FKMW1NeWY?oc=5">삼성전기, 직원이 AI 도구 제작</a></h4><p>삼성전기가 반복 업무를 줄일 AI 도구를 직원이 직접 만든다.</p><div class="src">매일일보<a class="orig" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFAyUHF2R2Z3MGl4WUpPR2ZoTmpiQ2gxa3lPbXd5T0NMcVVLbkQ1YnFQMWdlRE5HbHkwNGVIbGdjaXJIWU5JbzJUNEEzT1JDc09IRUlJcnJZaUZzc3N6V3FKMW1NeWY?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMi2wJBVV95cUxOdVY0c2JuZjk5WTNpVHpQR2t1LVUwQjFram9oYUctLUhONDVHX29tMmpFaWxDLWJoZWJ6WGZ3NGcxNk1zd1duRll4RjNKS3R1STJNbHZUZDdLd1RrbEZuWTRRa2pmaFFEMFNBZTJsQ3dHUWpURGNQbFhqcV94ZlEtaHlyQlRSUjR2cW1ZWWJXdE9QVzlJREFpVG1VSktkYmxiZW14bmFvQ01SX29YQzJ4VkpfRWRKX0pmSC1JOWJScWh1ZVhUVmZDMTRpdzZIM1BYX1hFY091UXBwMDAya3VpQ2N2QVJRd01XVHEyZnVHV1JKZ2hQSEsxNFhLMmtSSmRPc1BRMWVOUFMybzY1STU1RlFmSGdCVW1CM3lGNGFqOURrTERyanpsTm5JUjZzNzRRaERCUUZQYzNxX2dpUlBhUms5Qy1heF9KalFhUHMyNnRDZWZKNFNHVVN2aw?oc=5">클로드·제미나이 채용 공고 급증</a></h4><p>채용시장에서 클로드 관련 공고 770%, 제미나이 500% 증가.</p><div class="src">www.cio.com<a class="orig" href="https://news.google.com/rss/articles/CBMi2wJBVV95cUxOdVY0c2JuZjk5WTNpVHpQR2t1LVUwQjFram9oYUctLUhONDVHX29tMmpFaWxDLWJoZWJ6WGZ3NGcxNk1zd1duRll4RjNKS3R1STJNbHZUZDdLd1RrbEZuWTRRa2pmaFFEMFNBZTJsQ3dHUWpURGNQbFhqcV94ZlEtaHlyQlRSUjR2cW1ZWWJXdE9QVzlJREFpVG1VSktkYmxiZW14bmFvQ01SX29YQzJ4VkpfRWRKX0pmSC1JOWJScWh1ZVhUVmZDMTRpdzZIM1BYX1hFY091UXBwMDAya3VpQ2N2QVJRd01XVHEyZnVHV1JKZ2hQSEsxNFhLMmtSSmRPc1BRMWVOUFMybzY1STU1RlFmSGdCVW1CM3lGNGFqOURrTERyanpsTm5JUjZzNzRRaERCUUZQYzNxX2dpUlBhUms5Qy1heF9KalFhUHMyNnRDZWZKNFNHVVN2aw?oc=5">원문 보기 ›</a></div></div></div><div class="sec c2"><h2>경제·시장</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5WTnJNZHQwWHRJTnBBYjVfUmFTZldSN2FrdXJhMWpBWXpVRXVqaXFfN3RxQUZ3ZE9hVDVXcFUtczJmR0ZOTl80TFRwS2tLMTZTemJ5WVZqcDNQSU92WWR4UTYwSUFjWGc?oc=5">코스피 5.46% 급락 마감</a></h4><p>코스피가 5.46% 급락한 6,035.35로 마감했고 코스닥도 1%대 하락.</p><div class="src">연합뉴스TV<a class="orig" href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5WTnJNZHQwWHRJTnBBYjVfUmFTZldSN2FrdXJhMWpBWXpVRXVqaXFfN3RxQUZ3ZE9hVDVXcFUtczJmR0ZOTl80TFRwS2tLMTZTemJ5WVZqcDNQSU92WWR4UTYwSUFjWGc?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFSVVsNi1PTEVNNV9kV3d4R0x0ZkE2cnNxck5ITk1RZkdneWJmQVNXRnh2cFdJQU9OY1dWZ0NDa0Z0VVFVSDY4TVlpWlItRFBUbU5tMWJnaXNWRzQ?oc=5">뉴욕 연은 “연내 1회 인상 적절”</a></h4><p>뉴욕 연은이 연내 한 차례 금리 인상은 적절, 내년엔 불필요하다고 밝힘.</p><div class="src">KBS 뉴스<a class="orig" href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFSVVsNi1PTEVNNV9kV3d4R0x0ZkE2cnNxck5ITk1RZkdneWJmQVNXRnh2cFdJQU9OY1dWZ0NDa0Z0VVFVSDY4TVlpWlItRFBUbU5tMWJnaXNWRzQ?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE1nTzE0R1lMeUZwbWtWMVN2OFV4cngtSjFRWkdDdXNjcUFkSS1FWFJDSkVtNXF5VGh2RjRHRTZCV0ZUQjlIM19zdWZhWV9abjREaThUSTJrVWUtVjVYOFE?oc=5">시중은행 예금금리 더 오를까</a></h4><p>농협 3.9%, 신한 4%까지 오른 시중은행 예금금리의 추가 상승 여부에 관심.</p><div class="src">뉴스투데이<a class="orig" href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE1nTzE0R1lMeUZwbWtWMVN2OFV4cngtSjFRWkdDdXNjcUFkSS1FWFJDSkVtNXF5VGh2RjRHRTZCV0ZUQjlIM19zdWZhWV9abjREaThUSTJrVWUtVjVYOFE?oc=5">원문 보기 ›</a></div></div></div><div class="sec c3"><h2>산업·무역</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1MYVQyMnFwd3JNYlhrcGo5d1JTWnU5MDhzeHFuc28zNXp5ZnlPM1Z6bnlnRU55RzNGLXVPRWN4NUhTblJzVDllUGJoeFlYTUdwbnl6RjdSQzg4NlNGT1AzU2dVZFNSY0xYLWc?oc=5">조선용 후판 판매 회복세</a></h4><p>조선용 후판 판매가 뚜렷한 회복세로, 2022년 이후 최대 전망.</p><div class="src">철강금속신문<a class="orig" href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1MYVQyMnFwd3JNYlhrcGo5d1JTWnU5MDhzeHFuc28zNXp5ZnlPM1Z6bnlnRU55RzNGLXVPRWN4NUhTblJzVDllUGJoeFlYTUdwbnl6RjdSQzg4NlNGT1AzU2dVZFNSY0xYLWc?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9mX1BGR0ZuV3BucndwQmJZNDdaRl9yVDcxYnNtNm9OMlRBVjdVS2hMbFFwNTYzbWhVeldzVmNVV21yb3hsdEZpMF9hSmxTUmxkQXhnZVVuU2xUejUxMWtUMGxSbmtYM1It0gFsQVVfeXFMTnRTOGdtYmlQRDNid1NHYXNXRWNKNDF5Q1hmQk5wLXdXNlRJa0RveVdZZlNGRzdCT1Jvb3NvZWV4SWlGRElkaVZfeEhrNjcyYlprdVNuT3cweE1jTnFhNGhqZjB1Y3NkS1cyU3Zk?oc=5">美 조선·철강 프로젝트 난관</a></h4><p>WSJ는 트럼프 제조업 부흥 구상이 美 조선·철강 프로젝트에서 시험대에 올랐다고 보도.</p><div class="src">직썰<a class="orig" href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9mX1BGR0ZuV3BucndwQmJZNDdaRl9yVDcxYnNtNm9OMlRBVjdVS2hMbFFwNTYzbWhVeldzVmNVV21yb3hsdEZpMF9hSmxTUmxkQXhnZVVuU2xUejUxMWtUMGxSbmtYM1It0gFsQVVfeXFMTnRTOGdtYmlQRDNid1NHYXNXRWNKNDF5Q1hmQk5wLXdXNlRJa0RveVdZZlNGRzdCT1Jvb3NvZWV4SWlGRElkaVZfeEhrNjcyYlprdVNuT3cweE1jTnFhNGhqZjB1Y3NkS1cyU3Zk?oc=5">원문 보기 ›</a></div></div></div><div class="sec"><h2>직장인·커리어</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xdzZHVEpZbUNwV18xdmhGZU11QUdMSEZjYlhLdU12QVJJTXVrSV9QdUs3dGxOMkNCaEd1ZlNBUXZmRWpWc3IyMF8wQmM0TzcwbmNrN2NoQ2Zzdw?oc=5">AI만으론 생산성 못 높인다</a></h4><p>AI 도입만으로는 생산성이 오르지 않으며, 사람과 AI의 역할 분담이 필요하다는 조언.</p><div class="src">한국경제<a class="orig" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xdzZHVEpZbUNwV18xdmhGZU11QUdMSEZjYlhLdU12QVJJTXVrSV9QdUs3dGxOMkNCaEd1ZlNBUXZmRWpWc3IyMF8wQmM0TzcwbmNrN2NoQ2Zzdw?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE9KZXhGZUY4UnRVcGRWZ0tFN2F3eXI1Q1hhb1JyQmZmdXIwc0hUQVFhRllXSkRDTkZLQ3EzeEZrRGxhaFh4U01YaWtJN0NaREVfS2huejJR?oc=5">야근 2030, 수당 못 받아</a></h4><p>서울 2030 초과근무자 10명 중 6명이 수당을 제대로 받지 못했다.</p><div class="src">헤럴드경제<a class="orig" href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE9KZXhGZUY4UnRVcGRWZ0tFN2F3eXI1Q1hhb1JyQmZmdXIwc0hUQVFhRllXSkRDTkZLQ3EzeEZrRGxhaFh4U01YaWtJN0NaREVfS2huejJR?oc=5">원문 보기 ›</a></div></div></div><div class="sec c2 wide"><h2>건강·생활</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE9ManB5Q183S2EyUmFCM0ctSTdZNDBMRWpJT1lUU2pZLTViUjlZWXNkemNSV2pRa1VNMWZpZURMM2xFa1B1LUJLUHFnUVBYT3Jhdkhn0gFTQVVfeXFMT0xqcHlDXzdLYTJSYUIzRy1JN1k0MExFaklPWVRTalktNWJSOVlZc2R6Y1JXalFrVU0xZmllREwzbEVrUHUtQktQcWdRUFhPcmF2SGc?oc=5">숙면, 운동 시간보다 꾸준함</a></h4><p>하루 10분 운동도 시간의 길이보다 꾸준함이 숙면의 비결이라는 내용.</p><div class="src">VOA 한국어 홈페이지<a class="orig" href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE9ManB5Q183S2EyUmFCM0ctSTdZNDBMRWpJT1lUU2pZLTViUjlZWXNkemNSV2pRa1VNMWZpZURMM2xFa1B1LUJLUHFnUVBYT3Jhdkhn0gFTQVVfeXFMT0xqcHlDXzdLYTJSYUIzRy1JN1k0MExFaklPWVRTalktNWJSOVlZc2R6Y1JXalFrVU0xZmllREwzbEVrUHUtQktQcWdRUFhPcmF2SGc?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1fSzB6eXg2MVBsdDVha1UtWlRSSkJUZklHLW1EbHJpVHl0UFlrdzV3eXkyUjhuMTV0QmpPRGRxWG9rUjZ4blprU2VCX1BlYlRXVDNWMmRIQzkyMDhlcXN1QXFOWWphTnc?oc=5">중년 운동 &#x27;FITT 법칙&#x27;</a></h4><p>매일 하지 않아도 괜찮다며, 중년 운동의 핵심으로 FITT 법칙을 소개.</p><div class="src">경인신문<a class="orig" href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1fSzB6eXg2MVBsdDVha1UtWlRSSkJUZklHLW1EbHJpVHl0UFlrdzV3eXkyUjhuMTV0QmpPRGRxWG9rUjZ4blprU2VCX1BlYlRXVDNWMmRIQzkyMDhlcXN1QXFOWWphTnc?oc=5">원문 보기 ›</a></div></div></div>
+</div>
+<div class="footer"><span>※ 요약은 기사 제목을 바탕으로 AI가 작성했습니다. 소재로 쓰기 전 원문을 확인하세요.</span><span>시세: Yahoo Finance · 기사: Google News</span></div>
+</div></body></html>
