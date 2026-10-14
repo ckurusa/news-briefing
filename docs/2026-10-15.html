@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>나믿따 신문 2026-10-15</title>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #e9e6df; }
+body { font-family: 'Noto Serif KR', 'Batang', 'Malgun Gothic', serif; color: #1b1b1b; word-break: keep-all; }
+.page { width: 210mm; height: 297mm; margin: 0 auto; padding: 8mm 11mm; background: #fbf9f3;
+        display: flex; flex-direction: column; overflow: hidden; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+a { color: inherit; text-decoration: none; }
+.masthead { text-align: center; border-bottom: 3px double #1b1b1b; padding-bottom: 3mm; }
+.masthead h1 { font-size: 36pt; letter-spacing: 5px; font-weight: 900; line-height: 1.1; }
+.masthead .sub { font-family: 'Malgun Gothic', sans-serif; font-size: 8.5pt; color: #444; margin-top: 1.5mm;
+                 display: flex; justify-content: space-between; border-top: 1px solid #1b1b1b; padding-top: 1.5mm; }
+.ticker { display: grid; grid-template-columns: repeat(6, 1fr); font-family: 'Malgun Gothic', sans-serif;
+          border-bottom: 1px solid #1b1b1b; margin-bottom: 3mm; }
+.ticker div { padding: 1.2mm 1mm; text-align: center; border-right: 1px solid #bbb; font-size: 8pt; }
+.ticker div:last-child { border-right: none; }
+.ticker b { display: block; font-size: 8pt; color: #555; font-weight: 700; }
+.ticker span { display: block; font-size: 10pt; font-weight: 700; }
+.up { color: #c0392b; } .down { color: #1f5fa8; }
+.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: auto;
+        column-gap: 5mm; row-gap: 2.5mm; min-height: 0; align-content: start; }
+.grid > .c2, .grid > .c3 { border-left: 1px solid #1b1b1b; padding-left: 5mm; }
+.grid > .wide { grid-column: 2 / span 2; }
+.grid > .wide .item { break-inside: avoid; }
+.sec h2 { font-family: 'Malgun Gothic', sans-serif; font-size: 10pt; letter-spacing: 1px; color: #fff;
+          background: #1b1b1b; padding: 1mm 2.5mm; margin-bottom: 1.5mm; display: inline-block; }
+.headline { grid-column: 1 / span 2; padding-right: 2mm; }
+.headline h3 { font-size: 22pt; line-height: 1.25; font-weight: 900; margin-bottom: 2.5mm; }
+.headline p { font-size: 10.5pt; line-height: 1.55; }
+.fun { grid-column: 3; }
+.item { padding: 1.2mm 0; border-bottom: 1px solid #ccc; }
+.item:last-child { border-bottom: none; }
+.item h4 { font-size: 10pt; line-height: 1.35; font-weight: 800; margin-bottom: 0.8mm; }
+.item p { font-size: 8.5pt; line-height: 1.42; color: #333; }
+.item .src { font-family: 'Malgun Gothic', sans-serif; font-size: 7.5pt; color: #777; margin-top: 0.8mm; }
+.item .src a.orig { color: #1f5fa8; font-weight: 700; margin-left: 1.5mm; }
+.fun .item h4 { font-size: 10.5pt; }
+.fun .item p { font-size: 8.5pt; }
+.ideas { border: 2px solid #1b1b1b; padding: 2.5mm 3mm; background: #f3efe3; }
+.ideas ul { list-style: none; }
+.ideas li { font-size: 8pt; line-height: 1.4; color: #333; margin-bottom: 1.2mm; }
+.ideas li b { display: block; font-size: 9pt; color: #1b1b1b; margin-bottom: 0.4mm; line-height: 1.35; }
+.footer { font-family: 'Malgun Gothic', sans-serif; font-size: 7pt; color: #777; margin-top: 3mm;
+          border-top: 1px solid #1b1b1b; padding-top: 1.5mm; display: flex; justify-content: space-between; }
+/* 휴대폰 화면: A4 고정 폭 대신 세로로 쌓는다 (인쇄에는 적용되지 않음) */
+@media screen and (max-width: 820px) {
+  .page { width: 100%; height: auto; padding: 5mm 4mm; }
+  .masthead h1 { font-size: 30pt; letter-spacing: 3px; }
+  .masthead .sub { font-size: 7pt; flex-wrap: wrap; gap: 1mm; justify-content: center; }
+  .ticker { grid-template-columns: repeat(3, 1fr); }
+  .grid { display: block; }
+  .grid > .c2, .grid > .c3 { border-left: none; padding-left: 0; }
+  .headline { border-right: none; padding-right: 0; margin-bottom: 4mm; }
+  .headline h3 { font-size: 19pt; }
+  .item h4 { font-size: 11.5pt; } .item p { font-size: 10pt; }
+  .sec { margin-bottom: 4mm; }
+  .footer { flex-direction: column; gap: 1mm; }
+}
+</style></head><body><div class="page">
+<div class="masthead"><h1>나믿따 신문</h1>
+<div class="sub"><span>AI · 경제 · 재미를 한 장에</span><span>2026년 10월 15일 목요일</span><span>나믿따 뉴스브리핑 편집</span></div></div>
+<div class="ticker"><div><b>원/달러</b><span class="up">1,342.0원</span><span class="up" style="font-size:8.5pt">(▲0.13%)</span></div><div><b>코스피</b><span class="down">6,008.81</span><span class="down" style="font-size:8.5pt">(▼0.44%)</span></div><div><b>코스닥</b><span class="down">823.88</span><span class="down" style="font-size:8.5pt">(▼1.57%)</span></div><div><b>S&amp;P500</b><span class="down">7,718.94</span><span class="down" style="font-size:8.5pt">(▼1.11%)</span></div><div><b>나스닥</b><span class="down">26,692.87</span><span class="down" style="font-size:8.5pt">(▼1.88%)</span></div><div><b>비트코인</b><span class="down">81,552달러</span><span class="down" style="font-size:8.5pt">(▼1.86%)</span></div></div>
+<div class="grid">
+<div class="sec headline"><h2>TOP · AI·테크</h2><h3><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5LVExnVlp6cGpXTlFuZF9xYVVuN2tCMXJMeUtqV2FMOHR6dFdoWTd2S2d2VldEUDdoNllTQkpZb0Izbm9TZ3loZ1huRHpQVVBjbURlZ3RLTkpDZ1FtR1RpOGtrc2NKSkJJZUMweE9oV0pyQ19rNjFzWmRsZw?oc=5">제미나이 4 아르곤, 앱에서 사용 가능</a></h3><p>구글 제미나이 4 아르곤을 이제 제미나이 앱에서 바로 만나볼 수 있다.</p><div class="item"><div class="src">blog.google<a class="orig" href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5LVExnVlp6cGpXTlFuZF9xYVVuN2tCMXJMeUtqV2FMOHR6dFdoWTd2S2d2VldEUDdoNllTQkpZb0Izbm9TZ3loZ1huRHpQVVBjbURlZ3RLTkpDZ1FtR1RpOGtrc2NKSkJJZUMweE9oV0pyQ19rNjFzWmRsZw?oc=5">원문 보기 ›</a></div></div></div>
+<div class="sec fun c3"><h2>오늘의 재미</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE9DRXIxUkkybTIxUWwxRmJrOHJWRlBmVTNPQ1ZBMVJadkJialNwSS1fcEZaZ0U4UHFlR2p3dmoxQzlON05vTGRNRTBYMy1BTEhhXzJxRA?oc=5">오픈AI 회의실 휴지의 정체</a></h4><p>오픈AI 회의실 TV에 꽂혀 있던 휴지가 알고 보니 도청장치였다는 소식.</p><div class="src">JTBC<a class="orig" href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE9DRXIxUkkybTIxUWwxRmJrOHJWRlBmVTNPQ1ZBMVJadkJialNwSS1fcEZaZ0U4UHFlR2p3dmoxQzlON05vTGRNRTBYMy1BTEhhXzJxRA?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE51OTduQUYxbnEyeDRfOTR2RC0xekgteHkyZFZHdFVDXzhSNXRNemdBanNyczJpdjhxaUMxbkl5WTF5N2hCeVdJR3JHUmpERVBUR3V5bXZRRWl3enJzbVJneVFYYmdZSWxIS1VV0gFwQVVfeXFMTlhPX2h0NzcxZjlPNThLZVQ0bnBpQVBXS1ZmR1hob3QtZ3dUaFBBVWd1eFNnUGtaQm9QV2hiRktpOU5DWEM4WlM1Qm1aN3VIeXdvX2ltQVFicGJYaXBwRFd4NXgtQ2s1OFVzc190cUFmZg?oc=5">&#x27;답장 3시간 늦음&#x27; 판결해주는 앱</a></h4><p>연인 다툼의 과실을 판결해주는 앱이 화제다.</p><div class="src">머니투데이<a class="orig" href="https://news.google.com/rss/articles/CBMia0FVX3lxTE51OTduQUYxbnEyeDRfOTR2RC0xekgteHkyZFZHdFVDXzhSNXRNemdBanNyczJpdjhxaUMxbkl5WTF5N2hCeVdJR3JHUmpERVBUR3V5bXZRRWl3enJzbVJneVFYYmdZSWxIS1VV0gFwQVVfeXFMTlhPX2h0NzcxZjlPNThLZVQ0bnBpQVBXS1ZmR1hob3QtZ3dUaFBBVWd1eFNnUGtaQm9QV2hiRktpOU5DWEM4WlM1Qm1aN3VIeXdvX2ltQVFicGJYaXBwRFd4NXgtQ2s1OFVzc190cUFmZg?oc=5">원문 보기 ›</a></div></div></div>
+<div class="sec"><h2>AI·테크</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1wVE1RdW9nNkJVRzFqUnVlZE92Z2VMRjR2NElRRFpxVmtJcGRaM1lrOWhiMVpSZ2pmVjRjb3ZfSml5WDJ0endyMXNzaGxKZw?oc=5">콜마, 사내 AI 에이전트 도입</a></h4><p>콜마가 생산부터 연구까지 전사 AX를 가속하며 사내 AI 에이전트를 도입했다.</p><div class="src">전자신문<a class="orig" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1wVE1RdW9nNkJVRzFqUnVlZE92Z2VMRjR2NElRRFpxVmtJcGRaM1lrOWhiMVpSZ2pmVjRjb3ZfSml5WDJ0endyMXNzaGxKZw?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNUVVrYWFYaWtZa1JwWXVkWUd1RW9WUUVkS2JMdDk0X1RraWU3UXZiZVlFdXVKZ3p5cloycUNseUpuUXAzc00zMHk1aFpUUUdGT0hGeHFBSG93Q24tQW5qN3lQSERtTWhaTmZ6MXQ2NXo4MmU1d01ESGxSaUZacHQ2U01uVDlwX09ERW84M216cWM2aG8?oc=5">Claude Platform, 트레이스 내보내기</a></h4><p>Anthropic이 Claude Platform에 OpenTelemetry 트레이스 내보내기 기능을 추가했다.</p><div class="src">Unite.AI<a class="orig" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNUVVrYWFYaWtZa1JwWXVkWUd1RW9WUUVkS2JMdDk0X1RraWU3UXZiZVlFdXVKZ3p5cloycUNseUpuUXAzc00zMHk1aFpUUUdGT0hGeHFBSG93Q24tQW5qN3lQSERtTWhaTmZ6MXQ2NXo4MmU1d01ESGxSaUZacHQ2U01uVDlwX09ERW84M216cWM2aG8?oc=5">원문 보기 ›</a></div></div></div><div class="sec c2"><h2>경제·시장</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1XSEdnTDRfYzE1NlhBMy1qZnZZX1pTaU1WMWJ0OGdxRXZUUzhKY1czN2h0ZVU2VUVzX0E0S3puQ3NiZ2RCdV9kNzlnQVFSb0RQMVBlWDUycUpJa2pOMkVHRmdiNEVPZEFrVUYtUjh6X19RZHpF0gF0QVVfeXFMTXpseDNDQWVOYTdGSkp2a0VXRzVoV09KTWFSX2FBSGd4Sk9BSkktNlBBZHFlcUk3TnFtVWV1UHk1SFdaZ1R1OVVER1pyd3AtM292WHhSRGlvQ0VGLWZfSVM1S2M0Rk1tZjJJS3B6QjI4STV2QUg?oc=5">미 9월 CPI 3.7%↑, 전망치 상회</a></h4><p>미국 9월 소비자물가가 전년 대비 3.7% 올라 기준금리 결정 앞두고 전망치를 웃돌았다.</p><div class="src">MBC 뉴스<a class="orig" href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1XSEdnTDRfYzE1NlhBMy1qZnZZX1pTaU1WMWJ0OGdxRXZUUzhKY1czN2h0ZVU2VUVzX0E0S3puQ3NiZ2RCdV9kNzlnQVFSb0RQMVBlWDUycUpJa2pOMkVHRmdiNEVPZEFrVUYtUjh6X19RZHpF0gF0QVVfeXFMTXpseDNDQWVOYTdGSkp2a0VXRzVoV09KTWFSX2FBSGd4Sk9BSkktNlBBZHFlcUk3TnFtVWV1UHk1SFdaZ1R1OVVER1pyd3AtM292WHhSRGlvQ0VGLWZfSVM1S2M0Rk1tZjJJS3B6QjI4STV2QUg?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5odDYzR2FNMTlSN2I3NE5hTDJlbG04QVdraE10ZG02NUFRWEtsM0txRTdaOG5OZklEOTlHTmp0ZkFQSXdDZTNtZ19NSHBpVmtFYm4wYXMwdENWdEFtSVE5amFxR3RienBxVUNuY1ZpMVU?oc=5">코스피 0.44%↓, 6000선 턱걸이</a></h4><p>ASML 실적 실망에 코스피가 0.44% 내린 6,008.81, 코스닥은 1.57% 하락했다.</p><div class="src">Investing.com 한국어<a class="orig" href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5odDYzR2FNMTlSN2I3NE5hTDJlbG04QVdraE10ZG02NUFRWEtsM0txRTdaOG5OZklEOTlHTmp0ZkFQSXdDZTNtZ19NSHBpVmtFYm4wYXMwdENWdEFtSVE5amFxR3RienBxVUNuY1ZpMVU?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE03NzFUaS01MkQ3SnhWeDRFNkJNd0l2RVdrSFBHNXUxWHhDRllicllURmZ5UFBvckhRUkI1VXFlXzlVeUFvT1NlTERuWHdiUUZqbG1LT3daa25BN1hDb1ZiUmJTcV9tYjl4RjF6b2l3aw?oc=5">예상 웃돈 물가에 달러 상승</a></h4><p>예상치를 상회한 물가 영향으로 달러가 오르며 원/달러는 1,342.0원(▲0.13%)이다.</p><div class="src">조세일보<a class="orig" href="https://news.google.com/rss/articles/CBMib0FVX3lxTE03NzFUaS01MkQ3SnhWeDRFNkJNd0l2RVdrSFBHNXUxWHhDRllicllURmZ5UFBvckhRUkI1VXFlXzlVeUFvT1NlTERuWHdiUUZqbG1LT3daa25BN1hDb1ZiUmJTcV9tYjl4RjF6b2l3aw?oc=5">원문 보기 ›</a></div></div></div><div class="sec c3"><h2>산업·무역</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1tRUdxS3dsZmVZSy01M1VYZXRkQ0VQWC1tT1pZUTJTNHJhN001Uk52NmYyUmMtOUVYaVo4SWh5dmpobWk3dWhEenkxQjRhZTdURE5RUjU2VXljcWE5dDA5N0ZnZW9RNDNsRTR1Q0NiVlZJbGFG0gF0QVVfeXFMTW1FR3FLd2xmZVlLLTUzVVhldGRDRVBYLW1PWllRMlM0cmE3TTVSTnY2ZjJSYy05RVhpWjhJaHl2amhtaTd1aER6eTFCNGFlN1RETlFSNTZVeWNxYTl0MDk3Rmdlb1E0M2xFNHVDQ2JWVklsYUY?oc=5">中 철강사, 인상 한 달 만에 감량보가?</a></h4><p>200위안 올렸던 중국 대형 철강사들이 한 달 만에 &#x27;감량보가&#x27;로 가는지 주목된다.</p><div class="src">스틸데일리<a class="orig" href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1tRUdxS3dsZmVZSy01M1VYZXRkQ0VQWC1tT1pZUTJTNHJhN001Uk52NmYyUmMtOUVYaVo4SWh5dmpobWk3dWhEenkxQjRhZTdURE5RUjU2VXljcWE5dDA5N0ZnZW9RNDNsRTR1Q0NiVlZJbGFG0gF0QVVfeXFMTW1FR3FLd2xmZVlLLTUzVVhldGRDRVBYLW1PWllRMlM0cmE3TTVSTnY2ZjJSYy05RVhpWjhJaHl2amhtaTd1aER6eTFCNGFlN1RETlFSNTZVeWNxYTl0MDk3Rmdlb1E0M2xFNHVDQ2JWVklsYUY?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE5qWVZvYUYwM2lOVExkeUxta1AyVHhwSDR0VTRvWnAzZXJHWHFBMXZrRzdjVVBBVWpwTV9WTFVhQnhYb2RvRkZBZDZXWTEzODdUVVVpc2pMOW90MGVhU05NedIBeEFVX3lxTE01RjFydEZDREJ4c2VBQnpqUE1sY1VscHBpNnF2eVcxUUtsOEt5LWU2ZVdQeVVOakJxRmo3OFU1cFJGRnkyMEdxcnJMME9iVE1qb1FsaWpZQUJ3bzI5WEQzSUtZRlMzXzRLNmVjT29iWXEwdmIydGtzdw?oc=5">베이지북, 유가·관세에 기업 부담↑</a></h4><p>미 연준 베이지북은 유가와 관세로 기업 부담이 커지고 소비는 정체됐다고 짚었다.</p><div class="src">뉴시스<a class="orig" href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE5qWVZvYUYwM2lOVExkeUxta1AyVHhwSDR0VTRvWnAzZXJHWHFBMXZrRzdjVVBBVWpwTV9WTFVhQnhYb2RvRkZBZDZXWTEzODdUVVVpc2pMOW90MGVhU05NedIBeEFVX3lxTE01RjFydEZDREJ4c2VBQnpqUE1sY1VscHBpNnF2eVcxUUtsOEt5LWU2ZVdQeVVOakJxRmo3OFU1cFJGRnkyMEdxcnJMME9iVE1qb1FsaWpZQUJ3bzI5WEQzSUtZRlMzXzRLNmVjT29iWXEwdmIydGtzdw?oc=5">원문 보기 ›</a></div></div></div><div class="sec"><h2>직장인·커리어</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE4wSGM5bkEtMDlHX2xqbC1haUZlXy0zek91SloyN216dzhRekZIbjZlNlktVVZCSFh4ZlJKUEZoVU9LV1VVcjhJaTNEdWREcGh1MlRF?oc=5">나를 키운 건 결국 일이었다</a></h4><p>일을 통해 성장해 온 과정을 돌아보는 브런치 글.</p><div class="src">브런치<a class="orig" href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE4wSGM5bkEtMDlHX2xqbC1haUZlXy0zek91SloyN216dzhRekZIbjZlNlktVVZCSFh4ZlJKUEZoVU9LV1VVcjhJaTNEdWREcGh1MlRF?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5BYXZMU0tUTnFZSVY1SURWM2pUQXhIV3liVW9sT2FyOGJKUWxibWVOMUE1VFpKX0VoeThHUTFQV25hOHdaTmllUlZ0RXdFYU1RbFd0eWdzY09WQQ?oc=5">흘러가되, 계획은 있다</a></h4><p>흐름에 맡기되 계획은 놓지 않는 일과 커리어의 태도를 다룬 브런치 글.</p><div class="src">브런치<a class="orig" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5BYXZMU0tUTnFZSVY1SURWM2pUQXhIV3liVW9sT2FyOGJKUWxibWVOMUE1VFpKX0VoeThHUTFQV25hOHdaTmllUlZ0RXdFYU1RbFd0eWdzY09WQQ?oc=5">원문 보기 ›</a></div></div></div><div class="sec c2 wide"><h2>건강·생활</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1DaENvdlN2bTZYeTJZSG03TlhGcVo4NXJaekRTRzI2V3lla1ZSdUZsdFo4eS1kUU1lYkJsUXRONlY4dzZncl83SllDeV9kaU0?oc=5">NMN, 돈 쓰기 전 확인할 5가지</a></h4><p>비싼 NMN을 먹기 전에 먼저 따져볼 다섯 가지 점검 사항을 소개한다.</p><div class="src">엘르 코리아 │ ELLE KOREA<a class="orig" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1DaENvdlN2bTZYeTJZSG03TlhGcVo4NXJaekRTRzI2V3lla1ZSdUZsdFo4eS1kUU1lYkJsUXRONlY4dzZncl83SllDeV9kaU0?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTFBMdnlQSG1MV18tRkd3MHdhMGtSNkpRR0NHRUxGRlI2SWtvQTVPT1lSdGZURlIzbE1pTDhHTmZ6WVl5bnJMVmpiaFp6VTl2WnVDS0NfSFZ3?oc=5">삼성 헬스, 수면 코칭 문턱 낮췄다</a></h4><p>삼성 헬스가 3일 정도 수면을 기록하면 맞춤 코칭을 받도록 기능을 바꿨다.</p><div class="src">매일경제<a class="orig" href="https://news.google.com/rss/articles/CBMiVkFVX3lxTFBMdnlQSG1MV18tRkd3MHdhMGtSNkpRR0NHRUxGRlI2SWtvQTVPT1lSdGZURlIzbE1pTDhHTmZ6WVl5bnJMVmpiaFp6VTl2WnVDS0NfSFZ3?oc=5">원문 보기 ›</a></div></div></div>
+</div>
+<div class="footer"><span>※ 요약은 기사 제목을 바탕으로 AI가 작성했습니다. 소재로 쓰기 전 원문을 확인하세요.</span><span>시세: Yahoo Finance · 기사: Google News</span></div>
+</div></body></html>
