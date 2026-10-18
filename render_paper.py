@@ -1,6 +1,7 @@
 """브리핑을 A4 1장짜리 신문 레이아웃(HTML, PDF)으로 만든다: "나믿따 신문"."""
 import shutil
 import subprocess
+import sys
 from datetime import date
 from html import escape
 from pathlib import Path
@@ -55,7 +56,7 @@ a { color: inherit; text-decoration: none; }
 .footer { font-family: 'Malgun Gothic', sans-serif; font-size: 7pt; color: #777; margin-top: 3mm;
           border-top: 1px solid #1b1b1b; padding-top: 1.5mm; display: flex; justify-content: space-between; }
 /* 휴대폰 화면: A4 고정 폭 대신 세로로 쌓는다 (인쇄에는 적용되지 않음) */
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 700px) {
   .page { width: 100%; height: auto; padding: 5mm 4mm; }
   .masthead h1 { font-size: 30pt; letter-spacing: 3px; }
   .masthead .sub { font-size: 7pt; flex-wrap: wrap; gap: 1mm; justify-content: center; }
@@ -93,7 +94,27 @@ def _ticker(market: list[str]) -> str:
     return f'<div class="ticker">{"".join(cells)}</div>'
 
 
-def to_html(briefing: dict, market: list[str], today: date, include_ideas: bool = True) -> str:
+BASE_URL = "https://ckurusa.github.io/news-briefing/"
+OG_HEIGHT = 388  # 794x388 → 제호·시세 띠·헤드라인·재미 단까지, 아래 섹션 제목이 걸리기 전에서 끊는다
+
+
+def _og_tags(briefing: dict, today: date, image_name: str) -> str:
+    """블로그·메신저에 주소를 붙였을 때 신문 미리보기 카드가 나오도록 하는 og 태그."""
+    ai = briefing.get("ai_tech", [])
+    desc = f"오늘의 헤드라인: {ai[0]['title']}" if ai else "AI · 경제 · 재미를 한 장에"
+    title = f"나믿따 신문 {today:%Y년 %m월 %d일} ({WEEKDAYS[today.weekday()]})"
+    img = BASE_URL + image_name
+    tags = {
+        "og:type": "website", "og:site_name": "나믿따 신문", "og:title": title, "og:description": desc,
+        "og:url": BASE_URL, "og:image": img, "og:image:width": "1588", "og:image:height": str(OG_HEIGHT * 2),
+        "twitter:card": "summary_large_image", "twitter:image": img,
+    }
+    return "\n".join(f'<meta property="{k}" content="{escape(v)}">' for k, v in tags.items())
+
+
+def to_html(
+    briefing: dict, market: list[str], today: date, include_ideas: bool = True, og_image: str | None = None
+) -> str:
     ai = briefing["ai_tech"]
     head = ai[0] if ai else None
     head_html = ""
@@ -125,6 +146,7 @@ def to_html(briefing: dict, market: list[str], today: date, include_ideas: bool 
     return f"""<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex"><title>나믿따 신문 {today:%Y-%m-%d}</title>
+{_og_tags(briefing, today, og_image) if og_image else ""}
 <style>{CSS}</style></head><body><div class="page">
 <div class="masthead"><h1>나믿따 신문</h1>
 <div class="sub"><span>AI · 경제 · 재미를 한 장에</span><span>{today:%Y년 %m월 %d일} {WEEKDAYS[today.weekday()]}요일</span><span>나믿따 뉴스브리핑 편집</span></div></div>
@@ -153,19 +175,47 @@ def _find_browser() -> str | None:
     return None
 
 
+def capture_png(html_path: Path, png_path: Path, height: int = 1123, width: int = 794) -> bool:
+    """HTML을 지정 크기로 캡처한다(고해상도 2배). 브라우저가 없으면 False."""
+    browser = _find_browser()
+    if not browser:
+        return False
+    subprocess.run(
+        [browser, "--headless", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=2",
+         f"--window-size={width},{height}", f"--screenshot={png_path}", html_path.resolve().as_uri()],
+        check=True, capture_output=True, timeout=60,
+    )
+    return png_path.exists()
+
+
+def _prune_old_previews(docs_dir: Path, today: date, keep_days: int = 14) -> None:
+    for p in docs_dir.glob("paper-*.png"):
+        try:
+            d = date.fromisoformat(p.stem.removeprefix("paper-"))
+        except ValueError:
+            continue
+        if (today - d).days > keep_days:
+            p.unlink(missing_ok=True)
+
+
 def make_paper(
     briefing: dict, market: list[str], today: date, out_dir: Path, docs_dir: Path | None = None
 ) -> tuple[Path, Path | None]:
     """개인용(소재 박스 포함) HTML·PDF를 out_dir에 저장한다. (html, pdf 또는 None) 반환.
-    docs_dir를 주면 공개용(소재 박스 제외) HTML도 날짜별 파일과 index.html(최신본)로 저장한다."""
+    docs_dir를 주면 공개용(소재 박스 제외) HTML을 날짜별 파일과 index.html(최신본)로,
+    미리보기 카드 이미지(paper-날짜.png)와 함께 저장한다."""
     out_dir.mkdir(exist_ok=True)
     html_path = out_dir / f"나믿따신문_{today:%Y-%m-%d}.html"
     html_path.write_text(to_html(briefing, market, today), encoding="utf-8")
     if docs_dir is not None:
         docs_dir.mkdir(exist_ok=True)
-        public = to_html(briefing, market, today, include_ideas=False)
+        image_name = f"paper-{today:%Y-%m-%d}.png"  # 날짜가 들어간 이름: 블로그·메신저의 이미지 캐시를 피한다
+        public = to_html(briefing, market, today, include_ideas=False, og_image=image_name)
         (docs_dir / f"{today:%Y-%m-%d}.html").write_text(public, encoding="utf-8")
         (docs_dir / "index.html").write_text(public, encoding="utf-8")
+        if not capture_png(docs_dir / "index.html", docs_dir / image_name, OG_HEIGHT):
+            print("[경고] 신문 미리보기 이미지를 만들지 못했습니다(브라우저 없음).", file=sys.stderr)
+        _prune_old_previews(docs_dir, today)
     browser = _find_browser()
     if not browser:
         return html_path, None
