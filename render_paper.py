@@ -100,6 +100,11 @@ OG_HEIGHT = 476  # 794x476 ≈ 5:3. 네이버 블로그 카드의 이미지 칸 
 OG_ONLY_TOP_CSS = "<style>.grid>.sec:not(.headline):not(.fun){display:none}</style>"
 
 
+def dated_url(today: date) -> str:
+    """그날 신문이 계속 그대로 열리는 고정 주소 (블로그 글에 쓰는 주소)."""
+    return f"{BASE_URL}{today:%Y-%m-%d}.html"
+
+
 def _og_tags(briefing: dict, today: date, image_name: str) -> str:
     """블로그·메신저에 주소를 붙였을 때 신문 미리보기 카드가 나오도록 하는 og 태그."""
     ai = briefing.get("ai_tech", [])
@@ -108,7 +113,7 @@ def _og_tags(briefing: dict, today: date, image_name: str) -> str:
     img = BASE_URL + image_name
     tags = {
         "og:type": "website", "og:site_name": "나믿따 신문", "og:title": title, "og:description": desc,
-        "og:url": BASE_URL, "og:image": img, "og:image:width": "1588", "og:image:height": str(OG_HEIGHT * 2),
+        "og:url": dated_url(today), "og:image": img,  # 대표 주소로 들어와도 그날 고정 주소를 가리킨다 "og:image:width": "1588", "og:image:height": str(OG_HEIGHT * 2),
         "twitter:card": "summary_large_image", "twitter:image": img,
     }
     return "\n".join(f'<meta property="{k}" content="{escape(v)}">' for k, v in tags.items())

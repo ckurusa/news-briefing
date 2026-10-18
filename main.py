@@ -16,11 +16,10 @@ import history
 from sections import KEYS
 from collect import collect_market, collect_news
 from render import to_kakao_messages, to_markdown
-from render_paper import make_paper
+from render_paper import dated_url, make_paper
 
 OUTPUT_DIR = Path(__file__).parent / "output"
 DOCS_DIR = Path(__file__).parent / "docs"  # GitHub Pages 공개용 (소재 박스 제외)
-PAGES_URL = "https://ckurusa.github.io/news-briefing/"
 
 
 def main() -> int:
@@ -62,8 +61,8 @@ def main() -> int:
             from publish import publish, wait_until_live
 
             publish(today)
-            paper_url = PAGES_URL
-            if not wait_until_live(PAGES_URL, today):
+            paper_url = dated_url(today)  # 그날 고정 주소: 블로그 글에 쓰면 나중에도 그날 신문이 열린다
+            if not wait_until_live(paper_url, today):
                 print("[경고] 신문 페이지 반영 확인 시간 초과 (링크는 그대로 보냅니다)", file=sys.stderr)
     except Exception as e:  # 신문 생성·게시 실패가 카카오 전송을 막지 않게
         print(f"[경고] 신문 생성/게시 실패: {e}", file=sys.stderr)
@@ -85,7 +84,7 @@ def main() -> int:
         sent = send_all(messages)
         if paper_url:
             # 카카오는 앱에 등록되지 않은 도메인의 링크 버튼을 열지 못할 수 있어, 본문에도 주소를 함께 넣는다
-            send_text(f"📰 나믿따 신문 (A4 한 장)\n{paper_url}", url=paper_url)
+            send_text(f"📰 나믿따 신문 (A4 한 장)\n오늘자 주소(블로그용)\n{paper_url}", url=paper_url)
             paper_sent = True
     except Exception as e:
         history.log_send("failed", getattr(e, "sent", sent), len(messages), paper_sent, n_articles, str(e))
