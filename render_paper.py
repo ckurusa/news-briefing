@@ -95,7 +95,9 @@ def _ticker(market: list[str]) -> str:
 
 
 BASE_URL = "https://ckurusa.github.io/news-briefing/"
-OG_HEIGHT = 388  # 794x388 → 제호·시세 띠·헤드라인·재미 단까지, 아래 섹션 제목이 걸리기 전에서 끊는다
+OG_HEIGHT = 476  # 794x476 ≈ 5:3. 네이버 블로그 카드의 이미지 칸 비율에 맞춰 좌우가 잘리지 않게 한다
+# 미리보기에는 제호·시세 띠·헤드라인·재미 단만 남기고, 아래 섹션은 숨긴다(중간에 잘려 보이지 않게)
+OG_ONLY_TOP_CSS = "<style>.grid>.sec:not(.headline):not(.fun){display:none}</style>"
 
 
 def _og_tags(briefing: dict, today: date, image_name: str) -> str:
@@ -188,13 +190,16 @@ def capture_png(html_path: Path, png_path: Path, height: int = 1123, width: int 
     return png_path.exists()
 
 
-def _prune_old_previews(docs_dir: Path, today: date, keep_days: int = 14) -> None:
+def _prune_old_previews(docs_dir: Path, today: date, keep_name: str, keep_days: int = 14) -> None:
+    """14일이 지난 미리보기 이미지와, 같은 날 크기를 바꿔 만든 예전 이미지를 지운다."""
     for p in docs_dir.glob("paper-*.png"):
+        if p.name == keep_name:
+            continue
         try:
-            d = date.fromisoformat(p.stem.removeprefix("paper-"))
+            d = date.fromisoformat(p.stem[len("paper-"):len("paper-") + 10])
         except ValueError:
             continue
-        if (today - d).days > keep_days:
+        if d == today or (today - d).days > keep_days:
             p.unlink(missing_ok=True)
 
 
@@ -209,13 +214,20 @@ def make_paper(
     html_path.write_text(to_html(briefing, market, today), encoding="utf-8")
     if docs_dir is not None:
         docs_dir.mkdir(exist_ok=True)
-        image_name = f"paper-{today:%Y-%m-%d}.png"  # 날짜가 들어간 이름: 블로그·메신저의 이미지 캐시를 피한다
+        # 날짜와 높이가 들어간 이름: 블로그·메신저의 이미지 캐시를 피하고, 자르는 크기를 바꿔도 새 이미지로 인식되게 한다
+        image_name = f"paper-{today:%Y-%m-%d}-{OG_HEIGHT}.png"
         public = to_html(briefing, market, today, include_ideas=False, og_image=image_name)
         (docs_dir / f"{today:%Y-%m-%d}.html").write_text(public, encoding="utf-8")
         (docs_dir / "index.html").write_text(public, encoding="utf-8")
-        if not capture_png(docs_dir / "index.html", docs_dir / image_name, OG_HEIGHT):
+        og_html = out_dir / "_og.html"
+        og_html.write_text(public.replace("</head>", OG_ONLY_TOP_CSS + "</head>"), encoding="utf-8")
+        try:
+            ok = capture_png(og_html, docs_dir / image_name, OG_HEIGHT)
+        finally:
+            og_html.unlink(missing_ok=True)
+        if not ok:
             print("[경고] 신문 미리보기 이미지를 만들지 못했습니다(브라우저 없음).", file=sys.stderr)
-        _prune_old_previews(docs_dir, today)
+        _prune_old_previews(docs_dir, today, keep_name=image_name)
     browser = _find_browser()
     if not browser:
         return html_path, None
