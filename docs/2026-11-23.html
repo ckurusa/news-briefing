@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>나믿따 신문 2026-11-23</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="나믿따 신문">
+<meta property="og:title" content="나믿따 신문 2026년 11월 23일 (월)">
+<meta property="og:description" content="오늘의 헤드라인: AgentCore CLI로 에이전트 개발·배포">
+<meta property="og:url" content="https://ckurusa.github.io/news-briefing/2026-11-23.html">
+<meta property="og:image" content="https://ckurusa.github.io/news-briefing/paper-2026-11-23-476.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://ckurusa.github.io/news-briefing/paper-2026-11-23-476.png">
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #e9e6df; }
+body { font-family: 'Noto Serif KR', 'Batang', 'Malgun Gothic', serif; color: #1b1b1b; word-break: keep-all; }
+.page { width: 210mm; height: 297mm; margin: 0 auto; padding: 8mm 11mm; background: #fbf9f3;
+        display: flex; flex-direction: column; overflow: hidden; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+a { color: inherit; text-decoration: none; }
+.masthead { text-align: center; border-bottom: 3px double #1b1b1b; padding-bottom: 3mm; }
+.masthead h1 { font-size: 36pt; letter-spacing: 5px; font-weight: 900; line-height: 1.1; }
+.masthead .sub { font-family: 'Malgun Gothic', sans-serif; font-size: 8.5pt; color: #444; margin-top: 1.5mm;
+                 display: flex; justify-content: space-between; border-top: 1px solid #1b1b1b; padding-top: 1.5mm; }
+.ticker { display: grid; grid-template-columns: repeat(6, 1fr); font-family: 'Malgun Gothic', sans-serif;
+          border-bottom: 1px solid #1b1b1b; margin-bottom: 3mm; }
+.ticker div { padding: 1.2mm 1mm; text-align: center; border-right: 1px solid #bbb; font-size: 8pt; }
+.ticker div:last-child { border-right: none; }
+.ticker b { display: block; font-size: 8pt; color: #555; font-weight: 700; }
+.ticker span { display: block; font-size: 10pt; font-weight: 700; }
+.up { color: #c0392b; } .down { color: #1f5fa8; }
+.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: auto;
+        column-gap: 5mm; row-gap: 2.5mm; min-height: 0; align-content: start; }
+.grid > .c2, .grid > .c3 { border-left: 1px solid #1b1b1b; padding-left: 5mm; }
+.grid > .wide { grid-column: 2 / span 2; }
+.grid > .wide .item { break-inside: avoid; }
+.sec h2 { font-family: 'Malgun Gothic', sans-serif; font-size: 10pt; letter-spacing: 1px; color: #fff;
+          background: #1b1b1b; padding: 1mm 2.5mm; margin-bottom: 1.5mm; display: inline-block; }
+.headline { grid-column: 1 / span 2; padding-right: 2mm; }
+.headline h3 { font-size: 22pt; line-height: 1.25; font-weight: 900; margin-bottom: 2.5mm; }
+.headline p { font-size: 10.5pt; line-height: 1.55; }
+.fun { grid-column: 3; }
+.item { padding: 1.2mm 0; border-bottom: 1px solid #ccc; }
+.item:last-child { border-bottom: none; }
+.item h4 { font-size: 10pt; line-height: 1.35; font-weight: 800; margin-bottom: 0.8mm; }
+.item p { font-size: 8.5pt; line-height: 1.42; color: #333; }
+.item .src { font-family: 'Malgun Gothic', sans-serif; font-size: 7.5pt; color: #777; margin-top: 0.8mm; }
+.item .src a.orig { color: #1f5fa8; font-weight: 700; margin-left: 1.5mm; }
+.fun .item h4 { font-size: 10.5pt; }
+.fun .item p { font-size: 8.5pt; }
+.ideas { border: 2px solid #1b1b1b; padding: 2.5mm 3mm; background: #f3efe3; }
+.ideas ul { list-style: none; }
+.ideas li { font-size: 8pt; line-height: 1.4; color: #333; margin-bottom: 1.2mm; }
+.ideas li b { display: block; font-size: 9pt; color: #1b1b1b; margin-bottom: 0.4mm; line-height: 1.35; }
+.footer { font-family: 'Malgun Gothic', sans-serif; font-size: 7pt; color: #777; margin-top: 3mm;
+          border-top: 1px solid #1b1b1b; padding-top: 1.5mm; display: flex; justify-content: space-between; }
+/* 휴대폰 화면: A4 고정 폭 대신 세로로 쌓는다 (인쇄에는 적용되지 않음) */
+@media screen and (max-width: 700px) {
+  .page { width: 100%; height: auto; padding: 5mm 4mm; }
+  .masthead h1 { font-size: 30pt; letter-spacing: 3px; }
+  .masthead .sub { font-size: 7pt; flex-wrap: wrap; gap: 1mm; justify-content: center; }
+  .ticker { grid-template-columns: repeat(3, 1fr); }
+  .grid { display: block; }
+  .grid > .c2, .grid > .c3 { border-left: none; padding-left: 0; }
+  .headline { border-right: none; padding-right: 0; margin-bottom: 4mm; }
+  .headline h3 { font-size: 19pt; }
+  .item h4 { font-size: 11.5pt; } .item p { font-size: 10pt; }
+  .sec { margin-bottom: 4mm; }
+  .footer { flex-direction: column; gap: 1mm; }
+}
+</style></head><body><div class="page">
+<div class="masthead"><h1>나믿따 신문</h1>
+<div class="sub"><span>AI · 경제 · 재미를 한 장에</span><span>2026년 11월 23일 월요일</span><span>나믿따 뉴스브리핑 편집</span></div></div>
+<div class="ticker"><div><b>원/달러</b><span class="up">1,345.5원</span><span class="up" style="font-size:8.5pt">(▲0.80%)</span></div><div><b>코스피</b><span class="down">4,869.96</span><span class="down" style="font-size:8.5pt">(▼5.21%)</span></div><div><b>코스닥</b><span class="down">645.68</span><span class="down" style="font-size:8.5pt">(▼5.71%)</span></div><div><b>S&amp;P500</b><span class="down">6,910.39</span><span class="down" style="font-size:8.5pt">(▼3.70%)</span></div><div><b>나스닥</b><span class="down">22,617.73</span><span class="down" style="font-size:8.5pt">(▼5.28%)</span></div><div><b>비트코인</b><span class="up">60,671달러</span><span class="up" style="font-size:8.5pt">(▲0.96%)</span></div></div>
+<div class="grid">
+<div class="sec headline"><h2>TOP · AI·테크</h2><h3><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTFA5dzJzem9NZEVydUdMNUQ4SGxxa1RubW1rM3dFczNsZmFBYjF5ZUMzbTNpN285LUxnR2htdDJhdUJYdXRISUkyVkg2QUd6NExFV2U4X2dXRFRmOFB4NVdrUWhmT1hDd1NOaTVB?oc=5">AgentCore CLI로 에이전트 개발·배포</a></h3><p>Kiro CLI·Claude Code와 함께 에이전트 개발부터 배포까지 잇는 워크플로우</p><div class="item"><div class="src">Amazon Web Services<a class="orig" href="https://news.google.com/rss/articles/CBMia0FVX3lxTFA5dzJzem9NZEVydUdMNUQ4SGxxa1RubW1rM3dFczNsZmFBYjF5ZUMzbTNpN285LUxnR2htdDJhdUJYdXRISUkyVkg2QUd6NExFV2U4X2dXRFRmOFB4NVdrUWhmT1hDd1NOaTVB?oc=5">원문 보기 ›</a></div></div></div>
+<div class="sec fun c3"><h2>오늘의 재미</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE94LWVyN3k2M1J5UHdzLXVRN3YzaHdzcDNKMlVGXzdsQlBwVTZ5QjREdVkzTzBwdXE2VjNVcHNYZGhFeGo3Yk9abEsxbTFqVEtHcmFwVFFCd2QtZw?oc=5">젠슨 황 떠난 뒤 엔비디아 새 수장 말투</a></h4><p>엔비디아 새 수장의 말투가 화제가 된 이유를 오피스로그가 다룬다</p><div class="src">한국경제<a class="orig" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE94LWVyN3k2M1J5UHdzLXVRN3YzaHdzcDNKMlVGXzdsQlBwVTZ5QjREdVkzTzBwdXE2VjNVcHNYZGhFeGo3Yk9abEsxbTFqVEtHcmFwVFFCd2QtZw?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBpdnd6ZWU4UkJ4YlJFNU1LcFNMQWY1N3RpUXZqQWVObC1acUtBeU5qQkxZOU1uT0VaLUthLTV3TDBBRThwZlhDOW1DQjRPck9lLVJXQnNiUUtiM3VSTnFLMGNTZ1RVTzJQcktucA?oc=5">코딩 기호 &#x27;=&#x27;을 킷캣으로</a></h4><p>레오 베트남이 개발자를 위한 이색 휴식 캠페인을 공개했다</p><div class="src">매드타임스<a class="orig" href="https://news.google.com/rss/articles/CBMibEFVX3lxTFBpdnd6ZWU4UkJ4YlJFNU1LcFNMQWY1N3RpUXZqQWVObC1acUtBeU5qQkxZOU1uT0VaLUthLTV3TDBBRThwZlhDOW1DQjRPck9lLVJXQnNiUUtiM3VSTnFLMGNTZ1RVTzJQcktucA?oc=5">원문 보기 ›</a></div></div></div>
+<div class="sec"><h2>AI·테크</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5HSEMyQzlOY2JGOGpqSzN4OWlSMHZFNnAtSWtmUTdFbmVvcUNLUmxhbGF1Zm1zR1hLUDZDTnAwZUgwMVNZVHkyb2RsQ0czTEZOR0VxRUMzQmtENDkydGk1QWZ5RHFOekt5MEFmNg?oc=5">AI에 보험설계사 문제 풀렸더니</a></h4><p>예상문제 50개 중 35개가 교재 정답과 달랐다</p><div class="src">영종뉴스<a class="orig" href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5HSEMyQzlOY2JGOGpqSzN4OWlSMHZFNnAtSWtmUTdFbmVvcUNLUmxhbGF1Zm1zR1hLUDZDTnAwZUgwMVNZVHkyb2RsQ0czTEZOR0VxRUMzQmtENDkydGk1QWZ5RHFOekt5MEFmNg?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMirAJBVV95cUxOWjRBS2lWZ0FwNjBxa2RDMXJiMmszSWJOY1d5aHBQTnkycTJEUEZwX2FhZ0lQd0V1bi01blVVMzZ5Z0htU3lBZDBHXzZqVkRYeVlVSDhreGpNOHpMa2ZYbFJNdmt0NndSdFUtMm92eU5YSjFlZmZ1dGVWNHVTTlRKMzFYQjdYV2VKb0ZJQ0g5Q3c2QzRnWmZzRDl3RjlCeG5iY1JTWHN2SGpHSDJoakxjWUFaUFlRUUV4VEktV0JiSUNUWWd2bTZHcjczUkJ0YjdUcDdic2J1Y29LOENjMkYzakVrdVU0bHd0QkVid1dwcThpXzRzd1VVVHdjTHl2VVBrTUtxSHlRMnNmaHpBdUVqU3RlaHdSek8yS3I2R2F3YURJdUFFNlFXaHF1OTc?oc=5">하이트진로, 테라 AI 마케팅 전사 확산</a></h4><p>손흥민 AI 필터로 200만 접속을 모은 마케팅이 전사 AX로 번졌다</p><div class="src">https://aimkt.biz/<a class="orig" href="https://news.google.com/rss/articles/CBMirAJBVV95cUxOWjRBS2lWZ0FwNjBxa2RDMXJiMmszSWJOY1d5aHBQTnkycTJEUEZwX2FhZ0lQd0V1bi01blVVMzZ5Z0htU3lBZDBHXzZqVkRYeVlVSDhreGpNOHpMa2ZYbFJNdmt0NndSdFUtMm92eU5YSjFlZmZ1dGVWNHVTTlRKMzFYQjdYV2VKb0ZJQ0g5Q3c2QzRnWmZzRDl3RjlCeG5iY1JTWHN2SGpHSDJoakxjWUFaUFlRUUV4VEktV0JiSUNUWWd2bTZHcjczUkJ0YjdUcDdic2J1Y29LOENjMkYzakVrdVU0bHd0QkVid1dwcThpXzRzd1VVVHdjTHl2VVBrTUtxSHlRMnNmaHpBdUVqU3RlaHdSek8yS3I2R2F3YURJdUFFNlFXaHF1OTc?oc=5">원문 보기 ›</a></div></div></div><div class="sec c2"><h2>경제·시장</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE0wZXFaTFgzV3RDbGhabzluekpLWkd4bml2c2ZYZUNuU3FLU0dqb0c5NmNvdm1aRXozY2FaZ2I0WlBOUHc5WEhBR1pIWkZHVTdrMXZWZFFEYkdSRDVxaG9Ud2pmQWc5aVpSRldLMUVIUQ?oc=5">&#x27;검은 금요일&#x27; 뒤 코스피 반등할까</a></h4><p>코스피 4,869.96(▼5.21%). 삼성전자·SK하이닉스가 반등 시험대</p><div class="src">진일보 | 전남일보<a class="orig" href="https://news.google.com/rss/articles/CBMib0FVX3lxTE0wZXFaTFgzV3RDbGhabzluekpLWkd4bml2c2ZYZUNuU3FLU0dqb0c5NmNvdm1aRXozY2FaZ2I0WlBOUHc5WEhBR1pIWkZHVTdrMXZWZFFEYkdSRDVxaG9Ud2pmQWc5aVpSRldLMUVIUQ?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTFBWc2llQ0NQLWZTYjVtVU5OV1JrTjIwdThaNGFUOUd4a3NESG45ZkhpWktYT05TaDhSUHdDdEdqM0syUTFxY3hDMk1XQ085ZDRoZ3B4WA?oc=5">국고채 발행 줄여도 장기금리 4%</a></h4><p>발행을 10조 줄여도 장기금리는 4% 안팎, 정부 조달 부담은 커졌다</p><div class="src">뉴스1<a class="orig" href="https://news.google.com/rss/articles/CBMiVEFVX3lxTFBWc2llQ0NQLWZTYjVtVU5OV1JrTjIwdThaNGFUOUd4a3NESG45ZkhpWktYT05TaDhSUHdDdEdqM0syUTFxY3hDMk1XQ085ZDRoZ3B4WA?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQN0FLcE5xWWhyaTZrbUF3YWI4Umh6YUpITzNNV2Z1dDZZRkFlMWw2Z3lDZUlTa3pTODhWT0xfamMwSHUwWDlwS1hfVndwUHZFZ1l3WFhqak0wcWtwNFJYLUtHbzFCSDVjQjRvdUE0OWN0OFRhVTZKSjhwSWhuNkhrMHIzMUM1TG16?oc=5">스위스도 12월 금리 인상 가능성</a></h4><p>제로금리를 고수해 온 스위스도 12월 인상 가능성이 거론된다</p><div class="src">글로벌이코노믹<a class="orig" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQN0FLcE5xWWhyaTZrbUF3YWI4Umh6YUpITzNNV2Z1dDZZRkFlMWw2Z3lDZUlTa3pTODhWT0xfamMwSHUwWDlwS1hfVndwUHZFZ1l3WFhqak0wcWtwNFJYLUtHbzFCSDVjQjRvdUE0OWN0OFRhVTZKSjhwSWhuNkhrMHIzMUM1TG16?oc=5">원문 보기 ›</a></div></div></div><div class="sec c3"><h2>산업·무역</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQYzhod1BxQS1ud0JabVhNcENZaTByMm1ZZWpDZGZodlJXSXBPYTl4ZVR6OUVhbEh4dXpLeVJhMlhZZ3E3ZlBQbTFpTlNxN0dNTFJVdmJXTzdkaHpXbDdUSFEwYmhvdVZLLUIyU2FuakJ6ZHJtVFoxT183STdRd2xQdHZrak5RMGM?oc=5">유럽 전력가 200유로 돌파</a></h4><p>유럽 전력가가 200유로를 넘으면서 철강·전력사들이 잇달아 가동을 멈췄다</p><div class="src">글로벌이코노믹<a class="orig" href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQYzhod1BxQS1ud0JabVhNcENZaTByMm1ZZWpDZGZodlJXSXBPYTl4ZVR6OUVhbEh4dXpLeVJhMlhZZ3E3ZlBQbTFpTlNxN0dNTFJVdmJXTzdkaHpXbDdUSFEwYmhvdVZLLUIyU2FuakJ6ZHJtVFoxT183STdRd2xQdHZrak5RMGM?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTFBQaGE5UjNCYm1CUjNTRjhXdkVtR2g2ZEtzTF9NN1F6VWlYYVdlSHpkQTlDeVdZS0tjMFAwMm9ZbHBqSTR0VjYxYWVyVG9PX1RXaDhKUnpkLVk2bGt4aHZENUwtVHdMQnJoSEFlc1dWV2JWMjA?oc=5">미국 화물, 물량 정체에 운송비 상승</a></h4><p>9월 화물출하 지수는 1.9% 증가에 그쳤지만 운송비는 올랐다</p><div class="src">쉬핑뉴스넷<a class="orig" href="https://news.google.com/rss/articles/CBMic0FVX3lxTFBQaGE5UjNCYm1CUjNTRjhXdkVtR2g2ZEtzTF9NN1F6VWlYYVdlSHpkQTlDeVdZS0tjMFAwMm9ZbHBqSTR0VjYxYWVyVG9PX1RXaDhKUnpkLVk2bGt4aHZENUwtVHdMQnJoSEFlc1dWV2JWMjA?oc=5">원문 보기 ›</a></div></div></div><div class="sec"><h2>직장인·커리어</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE9ncmV3M05waEt6cVdibmgwNERNZm51eFdQMUgzczRwd1JyQ0xPWWhaUVZETjB4ZFVYWG9QZkVuR1JIZWxlYTY3YnpB?oc=5">챗GPT &#x27;닷츠&#x27; 문자 연동</a></h4><p>챗GPT 창을 열지 않아도 문자로 업무를 챙기는 기능이 나왔다</p><div class="src">코인리더스<a class="orig" href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE9ncmV3M05waEt6cVdibmgwNERNZm51eFdQMUgzczRwd1JyQ0xPWWhaUVZETjB4ZFVYWG9QZkVuR1JIZWxlYTY3YnpB?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQOTY2S19mM25YV1FFZUZXWU02NlRlVUM3eC1rRUNPOWxjRGozbTN1Tk1lUmI2clZRRTUyeGtOTmFZYlYxenA0QUN3QkdjcGdPeUZCc0ZIbDV4TUtucG5tc0VXU2JYa3hYTW4zRFV2MFUzeDRhaDJSMFZrUFdidnQ0MQ?oc=5">직장을 관두는 최고의 순간</a></h4><p>이데일리 칼럼이 직장을 떠나기에 가장 좋은 때가 언제인지 다룬다</p><div class="src">이데일리<a class="orig" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQOTY2S19mM25YV1FFZUZXWU02NlRlVUM3eC1rRUNPOWxjRGozbTN1Tk1lUmI2clZRRTUyeGtOTmFZYlYxenA0QUN3QkdjcGdPeUZCc0ZIbDV4TUtucG5tc0VXU2JYa3hYTW4zRFV2MFUzeDRhaDJSMFZrUFdidnQ0MQ?oc=5">원문 보기 ›</a></div></div></div><div class="sec c2 wide"><h2>건강·생활</h2><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE8waWhCZ25tb0Y3THByQUdNQWJJbXNqbmFKVloxNWlKRG1IdHBCU0hrTjFlRmlqOUdtSHJjLXdURnlDYlBZMU5Gd1JXWlp4TVQ4RXo5d1pUQTAwb1dUSWJFZ9IBeEFVX3lxTE50cmY1UDRiektzeEtCUUNhMzRqcVBhMjlPUHBsZlRIRkVtTWEzck0xTUJodlYzZElZUlY0MUxmM3hSTm93SmVOdkZsTmtVZ1RmQzJXRFlwYmVPbmtlSEZXSVBrbnNab1BnMk9XY1c3VkE0R1JkakR0MQ?oc=5">저탄고지·단식보다 규칙적 생활</a></h4><p>저탄고지·간헐적 단식이 만능은 아니며 규칙적인 식사와 수면이 중요하다는 내용</p><div class="src">뉴시스<a class="orig" href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE8waWhCZ25tb0Y3THByQUdNQWJJbXNqbmFKVloxNWlKRG1IdHBCU0hrTjFlRmlqOUdtSHJjLXdURnlDYlBZMU5Gd1JXWlp4TVQ4RXo5d1pUQTAwb1dUSWJFZ9IBeEFVX3lxTE50cmY1UDRiektzeEtCUUNhMzRqcVBhMjlPUHBsZlRIRkVtTWEzck0xTUJodlYzZElZUlY0MUxmM3hSTm93SmVOdkZsTmtVZ1RmQzJXRFlwYmVPbmtlSEZXSVBrbnNab1BnMk9XY1c3VkE0R1JkakR0MQ?oc=5">원문 보기 ›</a></div></div><div class="item"><h4><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1MYlZwN0lVaWxVN2FnSU1MZ3YyMUFIT3VvQmlfT3pjbnBwUlV5TXNvb2FJblVpN1BUdTlXMm5iQ0pEUUpmQjktMmF3dnhtaERialpoUVluWnMzWHVxZm1jRWowSXpxaFdYZzBJSW4zUQ?oc=5">고혈압 식단, 국·찌개·김치부터</a></h4><p>자주 먹는 국·찌개·김치부터 식단을 어떻게 바꿀지 짚는다</p><div class="src">강릉뉴스<a class="orig" href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1MYlZwN0lVaWxVN2FnSU1MZ3YyMUFIT3VvQmlfT3pjbnBwUlV5TXNvb2FJblVpN1BUdTlXMm5iQ0pEUUpmQjktMmF3dnhtaERialpoUVluWnMzWHVxZm1jRWowSXpxaFdYZzBJSW4zUQ?oc=5">원문 보기 ›</a></div></div></div>
+</div>
+<div class="footer"><span>※ 요약은 기사 제목을 바탕으로 AI가 작성했습니다. 소재로 쓰기 전 원문을 확인하세요.</span><span>시세: Yahoo Finance · 기사: Google News</span></div>
+</div></body></html>
